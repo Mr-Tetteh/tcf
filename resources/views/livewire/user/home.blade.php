@@ -5,7 +5,7 @@
             <div class="flex flex-col items-center lg:flex-row lg:justify-between lg:space-x-12">
                 <div class="w-full text-center lg:w-1/2 lg:text-left">
                     <h1 class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl lg:text-6xl">
-                        TABERNACLE CHRISTAN FELLOWSHIP
+                        TABERNACLE CHRISTIAN FELLOWSHIP
                     </h1>
                     <p class="mt-6 text-lg text-gray-600">
                         Welcome to Tabernacle Christian Fellowship,
