@@ -5,6 +5,7 @@ Route::prefix('users')->group(function () {
     Route::get('/about', \App\Livewire\User\About::class)->name('about');
     Route::get('sermons', \App\Livewire\User\Sermons::class)->name('sermons');
     Route::get('gallery', \App\Livewire\User\Gallery::class)->name('gallery');
+    Route::get('events', \App\Livewire\User\Events::class)->name('events');
 
 
 });

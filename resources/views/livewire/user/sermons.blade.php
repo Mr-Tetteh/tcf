@@ -1,4 +1,4 @@
-<div class="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+<div class="min-h-screen bg-gradient-to-b from-gray-50 to-white motion-preset-expand motion-duration-2000">
     <!-- Hero Section -->
     <section class="relative overflow-hidden py-20">
         <div class="container mx-auto px-4">

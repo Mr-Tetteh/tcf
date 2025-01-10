@@ -1,6 +1,6 @@
-<div class="min-h-screen w-full bg-gradient-to-b from-gray-50 to-white">
+<div class="min-h-screen w-full bg-gradient-to-b from-gray-50 to-white motion-preset-blur-right motion-duration-2000">
     <!-- Banner Section -->
-    <section class="relative overflow-hidden py-20">
+    <section class="relative overflow-hidden py-20 ">
         <div class="container mx-auto px-4 lg:px-8">
             <div class="flex flex-col items-center lg:flex-row lg:justify-between lg:space-x-12">
                 <div class="w-full text-center lg:w-1/2 lg:text-left">
