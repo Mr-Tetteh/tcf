@@ -13,7 +13,7 @@
                 <div class="relative break-inside-avoid-column group cursor-pointer">
                     <div class="relative overflow-hidden rounded-xl">
                         <img
-                            class="w-full transform transition-transform duration-700 group-hover:scale-110"
+                            class="w-full transform transition-transform duration-700 group-hover:scale-110 motion-preset-shake motion-duration-1000"
                             src="../../../images/472103650_1097083202201178_3237440960807897470_n.jpg"
                             alt="Saturday Meeting gathering"
                         />
@@ -29,7 +29,7 @@
                 <div class="relative break-inside-avoid-column group cursor-pointer">
                     <div class="relative overflow-hidden rounded-xl">
                         <img
-                            class="w-full transform transition-transform duration-700 group-hover:scale-110"
+                            class="w-full transform transition-transform duration-700 group-hover:scale-110 motion-preset-shake motion-duration-1000"
                             src="../../../images/472099816_1097081242201374_795921356235823414_n.jpg"
                             alt="All Night Service gathering"
                         />
@@ -45,7 +45,7 @@
                 <div class="relative break-inside-avoid-column group cursor-pointer">
                     <div class="relative overflow-hidden rounded-xl">
                         <img
-                            class="w-full transform transition-transform duration-700 group-hover:scale-110"
+                            class="w-full transform transition-transform duration-700 group-hover:scale-110 motion-preset-shake motion-duration-1000"
                             src="../../../images/472235635_1097083615534470_5199534875033006167_n.jpg"
                             alt="Holiday Prayer gathering"
                         />
@@ -61,7 +61,7 @@
                 <div class="relative break-inside-avoid-column group cursor-pointer">
                     <div class="relative overflow-hidden rounded-xl">
                         <img
-                            class="w-full transform transition-transform duration-700 group-hover:scale-110"
+                            class="w-full transform transition-transform duration-700 group-hover:scale-110 motion-preset-shake motion-duration-1000"
                             src="../../../images/472088002_1097083538867811_8205875028565979008_n.jpg"
                             alt="Family Gathering event"
                         />
