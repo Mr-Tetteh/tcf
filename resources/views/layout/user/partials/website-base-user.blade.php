@@ -20,7 +20,7 @@
 
 
     <!-- Option 1: If using Vite -->
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/css/styles.css', 'resources/js/script.js'])
 
 
 
