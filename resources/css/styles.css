@@ -1,0 +1,20 @@
+.submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.submenu.open {
+    max-height: 500px; /* Large enough to contain content */
+}
+
+.menu-arrow {
+    transition: transform 0.3s ease;
+}
+
+.menu-item.open .menu-arrow {
+    transform: rotate(180deg);
+}
+
+
+
