@@ -114,7 +114,7 @@
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span>
                     </a>
                 </p>
-                <p class="text-gray-400">Admin</p>
+                <a href="{{route('admin.dashboard')}}" class="text-gray-400">Admin</a>
             </div>
         </div>
     </div>

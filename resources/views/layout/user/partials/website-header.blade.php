@@ -1,4 +1,4 @@
-<header class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-sm shadow-lg shadow-gray-100/10 z-50 transition-all duration-300">
+<header class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-sm shadow-lg shadow-gray-100/10 z-50 transition-all duration-300 ">
     <div class="container mx-auto px-4 lg:px-8 py-4">
         <div class="flex items-center justify-between">
             <!-- Logo Section -->
