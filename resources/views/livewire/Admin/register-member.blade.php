@@ -6,7 +6,7 @@
 
                 <div class="lg:w-5/12">
                     <form class="bg-white rounded-xl shadow-sm p-6 space-y-6">
-                        <div class="text-xl font-semibold text-gray-800 mb-6">Registration Form</div>
+                        <div class="text-xl font-semibold text-gray-800 mb-6">Members Registration </div>
 
                         <!-- Name Fields Grid -->
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -46,7 +46,7 @@
                         <!-- Contact Information -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="space-y-2">
-                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                                <label for="email" class="block text-sm font-medium text-gray-700">Residence</label>
                                 <input
                                     type="email"
                                     id="email"
@@ -156,7 +156,7 @@
                             <thead class="bg-gray-50">
                                 <tr>
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Full Name</th>
-                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Email</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Residence</th>
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Contact</th>
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Gender</th>
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Church</th>
@@ -182,7 +182,7 @@
                                     <td class="px-6 py-4">
                                 <span
                                     class="inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
-                                    danielstay73@gmail.com
+                                    Meduma
                                 </span>
                                     </td>
                                     <td class="px-6 py-4 text-gray-500">0244544661</td>
