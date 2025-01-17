@@ -46,7 +46,7 @@
             <h2 class="text-4xl font-bold text-center mb-16 text-gray-900">Meeting Days</h2>
 
             <!-- Saturday Meetings -->
-            <div class="max-w-7xl mx-auto mb-24">
+            <div class="max-w-7xl mx-auto mb-24 intersect:motion-preset-slide-up motion-delay-0">
                 <div class="flex flex-col lg:flex-row items-center gap-12">
                     <div class="w-full lg:w-1/2">
                         <div class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -63,7 +63,7 @@
             </div>
 
             <!-- All Night Service -->
-            <div class="max-w-7xl mx-auto mb-24">
+            <div class="max-w-7xl mx-auto mb-24 intersect:motion-preset-slide-up motion-delay-100">
                 <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
                     <div class="w-full lg:w-1/2">
                         <div class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -80,7 +80,7 @@
             </div>
 
             <!-- Holiday Prayer Meetings -->
-            <div class="max-w-7xl mx-auto mb-24">
+            <div class="max-w-7xl mx-auto mb-24 intersect:motion-preset-slide-up motion-delay-200">
                 <div class="flex flex-col lg:flex-row items-center gap-12">
                     <div class="w-full lg:w-1/2">
                         <div class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -97,7 +97,7 @@
             </div>
 
             <!-- Family Gathering -->
-            <div class="max-w-7xl mx-auto">
+            <div class="max-w-7xl mx-auto intersect:motion-preset-slide-up motion-delay-300">
                 <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
                     <div class="w-full lg:w-1/2">
                         <div class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
