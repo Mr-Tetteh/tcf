@@ -9,4 +9,5 @@ Route::prefix('admin')->group(function () {
     Route::get('/register_member', \App\Livewire\Admin\RegisterMember::class)->name('admin.register_member');
     Route::get('/sermon', \App\Livewire\Admin\Sermon::class)->name('admin.sermon');
     Route::get('gallery', \App\Livewire\Admin\Gallery::class)->name('admin.gallery');
+    Route::get('/study_material', \App\Livewire\Admin\StudyMaterial::class)->name('admin.study_material');
 });
