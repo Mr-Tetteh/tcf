@@ -76,6 +76,20 @@
                     </div>
                 </div>
 
+
+                <div class="bg-white rounded-xl shadow-sm border-l-4 border-fuchsia-500 p-6 hover:shadow-md transition-shadow duration-200">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-fuchsia-100 flex items-center justify-center">
+                            <i class="fas fa-female text-xl text-fuchsia-500"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-sm font-medium text-gray-500">Total Number of  Youth</h3>
+                            <p class="text-2xl font-bold text-fuchsia-500">45,00</p>
+                        </div>
+                    </div>
+                </div>
+
+
                 <!-- Pending Bills Card -->
                 <div class="bg-white rounded-xl shadow-sm border-l-4 border-red-500 p-6 hover:shadow-md transition-shadow duration-200">
                     <div class="flex items-center">
