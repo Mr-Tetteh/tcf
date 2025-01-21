@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Admin\FamilyGathering;
+use App\Livewire\Admin\RecordManagement;
 use Illuminate\Support\Facades\Route;
 
 
@@ -12,4 +13,5 @@ Route::prefix('admin')->group(function () {
     Route::get('gallery', \App\Livewire\Admin\Gallery::class)->name('admin.gallery');
     Route::get('/study_material', \App\Livewire\Admin\StudyMaterial::class)->name('admin.study_material');
     Route::get('family_gathering', FamilyGathering::class)->name('admin.family_gathering');
+    Route::get('record_management', RecordManagement::class)->name('admin.record_management');
 });
