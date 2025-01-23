@@ -14,4 +14,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/study_material', \App\Livewire\Admin\StudyMaterial::class)->name('admin.study_material');
     Route::get('family_gathering', FamilyGathering::class)->name('admin.family_gathering');
     Route::get('record_management', RecordManagement::class)->name('admin.record_management');
+    Route::get('/finance', \App\Livewire\Admin\Finance::class)->name('admin.finance');
+    Route::get('/online_translations', \App\Livewire\Admin\Online::class)->name('admin.online');
 });
