@@ -14,10 +14,17 @@
                             </div>
                             <span class="ml-3 font-medium text-gray-700">Daniel</span>
                         </div>
-                        <button class="px-4 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-colors duration-200 flex items-center gap-2">
-                            <i class="fas fa-sign-out-alt"></i>
-                            Logout
-                        </button>
+                        <form method="POST" action="{{ route('logout') }}" class="px-4 py-2 text-red-600 rounded-lg  transition-colors duration-200 flex items-center gap-2">
+                            @csrf
+
+                            <x-responsive-nav-link :href="route('logout')"
+                                                   onclick="event.preventDefault(); this.closest('form').submit();">
+                                <i class="fas fa-sign-out-alt"></i>
+                                {{ __('Log Out') }}
+                            </x-responsive-nav-link>
+
+                        </form>
+
                     </div>
                 </div>
             </header>
