@@ -5,7 +5,7 @@
             <div class="flex flex-col lg:flex-row gap-8">
 
                 <div class="lg:w-5/12">
-                    <form class="max-w-3xl mx-auto">
+                    <form class="max-w-3xl mx-auto" wire:submit="create" enctype="multipart/form-data">
                         <!-- Header -->
                         <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-t-xl p-6">
                             <h2 class="text-2xl font-bold text-white">Upload Sermon</h2>
@@ -25,11 +25,16 @@
                                             Sermon Topic
                                         </label>
                                         <input
+                                            wire:model="title"
+
                                             type="text"
                                             name="sermon_title"
                                             class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-gray-50 hover:bg-white"
                                             placeholder="Enter the sermon topic"
                                         >
+                                        @error('title')
+                                        <span class="text-red-500 text-sm">{{$message}}</span>
+                                        @enderror
                                     </div>
 
                                     <!-- Preacher & Date Row -->
@@ -40,11 +45,15 @@
                                                 Preacher
                                             </label>
                                             <input
+                                                wire:model="preacher"
                                                 type="text"
                                                 name="preacher"
                                                 class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-gray-50 hover:bg-white"
                                                 placeholder="Enter preacher's name"
                                             >
+                                            @error('preacher')
+                                            <span class="text-red-500 text-sm">{{$message}}</span>
+                                            @enderror
                                         </div>
 
                                         <!-- Date -->
@@ -53,26 +62,28 @@
                                                 Sermon Date
                                             </label>
                                             <input
+                                                wire:model="date"
                                                 type="date"
                                                 name="date"
                                                 class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-gray-50 hover:bg-white"
                                             >
+                                            @error('date')
+                                            <span class="text-red-500 text-sm">{{$message}}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- File Upload Section -->
+
                             <div class="space-y-6">
                                 <h3 class="text-lg font-medium text-gray-900 border-b pb-2">Sermon Audio</h3>
-
                                 <div class="relative">
-                                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-500 transition-colors duration-200">
-                                        <input
-                                            type="file"
-                                            name="sermon_file"
-                                            class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                                        >
+                                    <label
+                                        for="sermon"
+                                        class="block border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-blue-500 transition duration-200"
+                                    >
                                         <div class="space-y-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
@@ -82,7 +93,17 @@
                                             </div>
                                             <p class="text-gray-500 text-sm">MP3, WAV, or M4A files up to 500MB</p>
                                         </div>
-                                    </div>
+                                        <input
+                                            id="sermon"
+                                            name="sermon"
+                                            type="file"
+                                            class="hidden"
+                                            wire:model="sermon"
+                                        >
+                                    </label>
+                                    @error('sermon')
+                                    <span class="text-red-500 text-sm mt-2 block">{{$message}}</span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -121,23 +142,24 @@
                                 </tr>
                                 </thead>
                                 <tbody class="divide-y divide-gray-100">
+                                @foreach($sermons as $sermon)
                                 <tr class="hover:bg-gray-50 transition-colors duration-200">
                                     <td class="px-6 py-4">
                                         <div class="flex items-center">
                                             <div class="ml-4">
-                                                <div class="font-medium text-gray-900">How Angles Work</div>
+                                                <div class="font-medium text-gray-900">{{$sermon->title}}</div>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4">
                                 <span
                                     class="inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
-                                    Mark Manu
+                                    {{$sermon->preacher}}
                                 </span>
                                     </td>
-                                    <td class="px-6 py-4 text-gray-500">20-3-2024</td>
+                                    <td class="px-6 py-4 text-gray-500">{{$sermon->date}}</td>
                                     <td class="px-6 py-4 text-gray-500"><audio controls>
-                                            <source src="../../sermons/kenny_G.mp3" type="audio/mpeg">
+                                            <source src="../../Storage/{{asset($sermon->sermon)}}" type="audio/mpeg">
                                         </audio>
                                     </td>
 
@@ -167,6 +189,7 @@
                                         </div>
                                     </td>
                                 </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
