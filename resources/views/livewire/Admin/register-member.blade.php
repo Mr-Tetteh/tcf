@@ -5,7 +5,7 @@
             <div class="flex flex-col lg:flex-row gap-8">
 
                 <div class="lg:w-5/12">
-                    <form class="bg-white rounded-xl shadow-sm p-6 space-y-6">
+                    <form wire:submit="create" class="bg-white rounded-xl shadow-sm p-6 space-y-6">
                         <div class="text-xl font-semibold text-gray-800 mb-6">Members Registration </div>
 
                         <!-- Name Fields Grid -->
@@ -17,8 +17,13 @@
                                     id="firstName"
                                     name="firstName"
                                     class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                    required
+                                    wire:model="first_name"
                                 >
+                                <div class="text-red-400">
+                                    @error('first_name')
+                                    {{$message}}
+                                    @enderror
+                                </div>
                             </div>
 
                             <div class="space-y-2">
@@ -28,8 +33,13 @@
                                     id="lastName"
                                     name="lastName"
                                     class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                    required
+                                    wire:model="last_name"
                                 >
+                                <div class="text-red-400">
+                                    @error('last_name')
+                                    {{$message}}
+                                    @enderror
+                                </div>
                             </div>
 
                             <div class="space-y-2">
@@ -39,7 +49,13 @@
                                     id="otherNames"
                                     name="otherNames"
                                     class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    wire:model="other_names"
                                 >
+                                <div class="text-red-400">
+                                    @error('other_names')
+                                    {{$message}}
+                                    @enderror
+                                </div>
                             </div>
                         </div>
 
@@ -48,23 +64,33 @@
                             <div class="space-y-2">
                                 <label for="email" class="block text-sm font-medium text-gray-700">Residence</label>
                                 <input
-                                    type="email"
+                                    type="text"
                                     id="email"
                                     name="email"
                                     class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                    required
+                                    wire:model="residence"
                                 >
+                                <div class="text-red-400">
+                                    @error('residence')
+                                    {{$message}}
+                                    @enderror
+                                </div>
                             </div>
 
                             <div class="space-y-2">
                                 <label for="contact" class="block text-sm font-medium text-gray-700">Contact Number</label>
                                 <input
-                                    type="tel"
+                                    type="text"
                                     id="contact"
                                     name="contact"
                                     class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                    required
+                                    wire:model="contact"
                                 >
+                                <div class="text-red-400">
+                                    @error('contact')
+                                    {{$message}}
+                                    @enderror
+                                </div>
                             </div>
                         </div>
 
@@ -76,8 +102,13 @@
                                 id="church"
                                 name="church"
                                 class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                required
+                                wire:model="church"
                             >
+                            <div class="text-red-400">
+                                @error('church')
+                                {{$message}}
+                                @enderror
+                            </div>
                         </div>
 
                         <!-- Age, DOB, and Gender Grid -->
@@ -89,8 +120,13 @@
                                     id="age"
                                     name="age"
                                     class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                    required
+                                    wire:model="age"
                                 >
+                                <div class="text-red-400">
+                                    @error('age')
+                                    {{$message}}
+                                    @enderror
+                                </div>
                             </div>
 
                             <div class="space-y-2">
@@ -100,8 +136,13 @@
                                     id="dob"
                                     name="dob"
                                     class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                    required
+                                    wire:model="date_of_birth"
                                 >
+                                <div class="text-red-400">
+                                    @error('date_of_birth')
+                                    {{$message}}
+                                    @enderror
+                                </div>
                             </div>
 
                             <div class="space-y-2">
@@ -110,12 +151,17 @@
                                     id="gender"
                                     name="gender"
                                     class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                    required
+                                    wire:model="gender"
                                 >
                                     <option value="">Select gender</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
                                 </select>
+                                <div class="text-red-400">
+                                    @error('gender')
+                                    {{$message}}
+                                    @enderror
+                                </div>
                             </div>
                         </div>
 
@@ -126,13 +172,18 @@
                                 id="ageCategory"
                                 name="ageCategory"
                                 class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                required
+                                wire:model="age_category"
                             >
                                 <option value="">Select age category</option>
                                 <option value="child">Child</option>
                                 <option value="youth">Youth</option>
                                 <option value="adult">Adult</option>
                             </select>
+                            <div class="text-red-400">
+                                @error('age_category')
+                                {{$message}}
+                                @enderror
+                            </div>
                         </div>
 
                         <!-- Submit Button -->
@@ -167,47 +218,49 @@
                                 </tr>
                                 </thead>
                                 <tbody class="divide-y divide-gray-100">
+                                @foreach($members as $member)
                                 <tr class="hover:bg-gray-50 transition-colors duration-200">
                                     <td class="px-6 py-4">
                                         <div class="flex items-center">
                                             <div
                                                 class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 font-semibold">
-                                                JD
+                                                {{$member->first_name[0]}}{{$member->other_names[0]}}{{$member->last_name[0]}}
+
                                             </div>
                                             <div class="ml-4">
-                                                <div class="font-medium text-gray-900">John Doe</div>
+                                                <div class="font-medium text-gray-900">{{$member->first_name}} {{$member->other_names}} {{$member->last_name}}</div>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4">
                                 <span
                                     class="inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
-                                    Meduma
+                                    {{$member->residence}}
                                 </span>
                                     </td>
-                                    <td class="px-6 py-4 text-gray-500">0244544661</td>
-                                    <td class="px-6 py-4 text-gray-500">Male</td>
+                                    <td class="px-6 py-4 text-gray-500">{{$member->contact}}</td>
+                                    <td class="px-6 py-4 text-gray-500">{{$member->gender}}</td>
                                     <td class="px-6 py-4">
                                 <span class="font-medium text-gray-900">
-                                   BBT
+                                   {{$member->church}}
                                 </span>
                                     </td>
                                     <td class="px-6 py-4">
                                 <span
                                     class="font-medium text-gray-900">
-                                    20
+                                    {{$member->age}}
                                 </span>
                                     </td>
                                     <td class="px-6 py-4">
                                      <span
                                          class="font-medium text-gray-900">
-                                    29-20-2000
+                                    {{$member->date_of_birth}}
                                 </span>
                                     </td>
                                     <td class="px-6 py-4">
                                      <span
                                          class="font-medium text-gray-900">
-                                    youth
+                                    {{$member->age_category}}
                                 </span>
                                     </td>
                                     <td class="px-6 py-4">
@@ -221,7 +274,7 @@
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                           d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                                 </svg>
-                                                Edit Member
+                                                Edit
                                             </button>
                                             <a href="patients/file/add"
                                                class="inline-flex items-center px-3 py-1.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200">
@@ -235,6 +288,7 @@
                                         </div>
                                     </td>
                                 </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
