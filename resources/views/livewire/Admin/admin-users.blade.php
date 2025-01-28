@@ -56,46 +56,56 @@
                         </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100">
+                        @foreach($users as $user)
                         <tr class="hover:bg-gray-50 transition-colors duration-200">
                             <td class="px-6 py-4">
                                 <div class="flex items-center">
                                     <div
                                         class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 font-semibold">
-                                        JD
+                                        {{$user->first_name[0]}} {{$user->last_name[0]}}
                                     </div>
                                     <div class="ml-4">
-                                        <div class="font-medium text-gray-900">John Doe</div>
+                                        <div class="font-medium text-gray-900">{{$user->first_name}} {{$user->last_name}}</div>
                                     </div>
                                 </div>
                             </td>
                             <td class="px-6 py-4">
                                 <span
                                     class="inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
-                                    danielstay73@gmail.com
+                                    {{$user->email}}
                                 </span>
                             </td>
-                            <td class="px-6 py-4 text-gray-500">0244544661</td>
+                            <td class="px-6 py-4 text-gray-500">{{$user->contact}}</td>
                             <td class="px-6 py-4 text-gray-500">Male</td>
                             <td class="px-6 py-4">
                                 <span
                                     class="inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium bg-red-100 text-red-800">
-                                    20-20-2000
+                                    {{$user->date_of_birth}}
                                 </span>
                             </td>
                             <td class="px-6 py-4">
                                 <span
                                     class="inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
-                                    Account
+                                    {{$user->role}}
                                 </span>
                             </td>
                             <td class="px-6 py-4">
                                 <span class="text-gray-500 text-sm truncate block max-w-xs">
-                                    <img
+                                    @if($user->profile_picture)
+                                        <img
+                                            class=" transform transition-transform duration-700 group-hover:scale-110 rounded-full motion-preset-shake motion-duration-1000"
+                                            src="{{asset($user->profile_picture)}}"
+                                            alt="Family Gathering event"
+                                            width="50%"
+                                        />
+                                    @else
+                                        <img
                                         class=" transform transition-transform duration-700 group-hover:scale-110 rounded-full motion-preset-shake motion-duration-1000"
-                                        src="../../../images/472088002_1097083538867811_8205875028565979008_n.jpg"
-                                        alt="Family Gathering event"
-                                        width="50%"
-                                    />
+                                        src="../../../images/user-icon-on-transparent-background-free-png.webp"
+                                        alt="profile Picture"
+                                        width="20%"
+                                        />
+                                    @endif
                                 </span>
                             </td>
                             <td class="px-6 py-4">
@@ -109,7 +119,7 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                   d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                         </svg>
-                                        Edit Role
+                                        Edit
                                     </button>
                                     <a href="patients/file/add"
                                        class="inline-flex items-center px-3 py-1.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200">
@@ -123,7 +133,7 @@
                                 </div>
                             </td>
                         </tr>
-                        </tbody>
+                        @endforeach
                     </table>
                 </div>
             </div>
