@@ -5,7 +5,7 @@
             <div class="flex flex-col lg:flex-row gap-8">
 
                 <div class="lg:w-5/12">
-                    <form class="max-w-3xl mx-auto" wire:submit="create" enctype="multipart/form-data">
+                    <form class="max-w-3xl mx-auto" wire:submit.prevent="create" enctype="multipart/form-data">
                         <!-- Header -->
                         <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-t-xl p-6">
                             <h2 class="text-2xl font-bold text-white">Upload Sermon</h2>

@@ -8,7 +8,6 @@ use Livewire\WithFileUploads;
 
 class Sermon extends Component
 {
-
     use WithFileUploads;
     #[Layout('layout.admin.partials.website-base-admin')]
     public $title;
@@ -29,7 +28,8 @@ class Sermon extends Component
     protected $rules = [
         'title' => 'required',
         'preacher' => 'required',
-        'sermon' => 'required|file',
+        'sermon' => 'required|file|mimes:mp3,wav,ogg|max:10240', // Max file size 10MB
+
         'date' => 'required',
 
     ];
@@ -38,7 +38,7 @@ class Sermon extends Component
     {
         $this->validate();
 
-        $sermonPath = $this->sermon ? $this->sermon->store('sermon', 'public') : null;
+        $sermonPath = $this->sermon->store('sermon', 'public');
 
         \App\Models\Sermon::create([
             'title' => $this->title,
