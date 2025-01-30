@@ -82,15 +82,6 @@
                     </x-primary-button>
                 </div>
 
-                <!-- Registration Link -->
-                <div class="text-center mt-4">
-                    <p class="text-sm text-gray-600 dark:text-gray-400">
-                        Don't have an account?
-                        <a href="{{ route('register') }}" class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
-                            Register here
-                        </a>
-                    </p>
-                </div>
             </form>
         </div>
     </div>

@@ -6,7 +6,7 @@
 
                 <div class="lg:w-5/12">
                     <!-- Form Container -->
-                    <form class="max-w-3xl mx-auto">
+                    <form class="max-w-3xl mx-auto" wire:submit="create">
                         <!-- Header -->
                         <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-t-xl p-6">
                             <h2 class="text-2xl font-bold text-white">Picture Upload</h2>
@@ -27,10 +27,15 @@
                                         </label>
                                         <input
                                             type="text"
-                                            required
                                             class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-gray-50 hover:bg-white"
                                             placeholder="Enter the image name"
+                                            wire:model="name"
                                         >
+                                    </div>
+                                    <div class="text-red-600">
+                                        @error('name')
+                                        {{$message}}
+                                        @enderror
                                     </div>
 
                                     <!-- Image Upload -->
@@ -43,10 +48,11 @@
                                         <div class="relative">
                                             <input
                                                 type="file"
-                                                required
                                                 accept="image/*"
                                                 class="hidden"
                                                 id="image-upload"
+                                                wire:model="image"
+
                                             >
                                             <label
                                                 for="image-upload"
@@ -59,6 +65,11 @@
                                                 <p class="text-sm text-gray-600">Click or drag image to upload</p>
                                                 <p class="text-xs text-gray-500 mt-1">PNG, JPG, GIF up to 10MB</p>
                                             </label>
+                                        </div>
+                                        <div class="text-red-600">
+                                            @error('image')
+                                            {{$message}}
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -93,11 +104,13 @@
                                 </tr>
                                 </thead>
                                 <tbody class="divide-y divide-gray-100">
+                                @foreach($galleries as $gallery)
+                                    @if($gallery)
                                 <tr class="hover:bg-gray-50 transition-colors duration-200">
                                     <td class="px-6 py-4">
                                         <div class="flex items-center">
                                             <div class="ml-4">
-                                                <div class="font-medium text-gray-900">How Angles Work</div>
+                                                <div class="font-medium text-gray-900">{{$gallery->name}}</div>
                                             </div>
                                         </div>
                                     </td>
@@ -106,9 +119,9 @@
                                     <td class="px-6 py-4 text-gray-500">
                                         <img
                                             class="transform transition-transform duration-700 group-hover:scale-110 motion-preset-shake motion-duration-1000"
-                                            src="../../../images/472088002_1097083538867811_8205875028565979008_n.jpg"
+                                            src="{{ Storage::url($gallery->image) }}"
                                             alt="Family Gathering event"
-                                            width="40%"
+                                            width="30%"
                                         />
                                     </td>
 
@@ -124,7 +137,7 @@
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                           d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                                 </svg>
-                                                Edit Member
+                                                Edit
                                             </button>
                                             <a href="patients/file/add"
                                                class="inline-flex items-center px-3 py-1.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200">
@@ -138,6 +151,8 @@
                                         </div>
                                     </td>
                                 </tr>
+                                    @endif
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
