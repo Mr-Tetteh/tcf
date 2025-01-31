@@ -6,7 +6,7 @@
 
                 <div class="lg:w-5/12">
                     <!-- Form Container -->
-                    <form class="max-w-3xl mx-auto">
+                    <form class="max-w-3xl mx-auto" wire:submit="create">
                         <!-- Header -->
                         <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-t-xl p-6">
                             <h2 class="text-2xl font-bold text-white">Record Management</h2>
@@ -28,8 +28,15 @@
                                             required
                                             class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-gray-50 hover:bg-white"
                                             placeholder="Enter the title of the record"
+                                            wire:model="title"
                                         >
                                     </div>
+                                    <div class="text-red-600">
+                                        @error('title')
+                                        {{$message}}
+                                        @enderror
+                                    </div>
+
 
                                     <div class="relative">
                                         <label class="text-sm font-medium text-gray-700 block mb-2">
@@ -39,8 +46,15 @@
                                             type="time"
                                             required
                                             class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-gray-50 hover:bg-white"
+                                            wire:model="start"
                                         >
                                     </div>
+                                    <div class="text-red-600">
+                                        @error('start')
+                                        {{$message}}
+                                        @enderror
+                                    </div>
+
 
 
                                     <div class="relative">
@@ -51,8 +65,15 @@
                                             type="time"
                                             required
                                             class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-gray-50 hover:bg-white"
+                                       wire:model="end"
                                         >
                                     </div>
+                                    <div class="text-red-600">
+                                        @error('name')
+                                        {{$message}}
+                                        @enderror
+                                    </div>
+
 
                                     <!-- Submit Button -->
                                     <button
@@ -63,7 +84,7 @@
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
                                         </svg>
-                                        Upload Study material
+                                        Upload Record
                                     </button>
                                 </div>
                             </div>
@@ -80,17 +101,19 @@
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Record Title </th>
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Time Started</th>
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Time Ended</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Date</th>
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Action </th>
 
 
                                 </tr>
                                 </thead>
                                 <tbody class="divide-y divide-gray-100">
+                                @foreach($records as $record)
                                 <tr class="hover:bg-gray-50 transition-colors duration-200">
                                     <td class="px-6 py-4">
                                         <div class="flex items-center">
                                             <div class="ml-4">
-                                                <div class="font-medium text-gray-900">How Angles Work</div>
+                                                <div class="font-medium text-gray-900">{{$record->title}}</div>
                                             </div>
                                         </div>
                                     </td>
@@ -99,7 +122,7 @@
                                     <td class="px-6 py-4 text-gray-500">
                                         <div class="flex items-center">
                                             <div class="ml-4">
-                                                <div class="font-medium text-gray-900">3:00pm</div>
+                                                <div class="font-medium text-gray-900">{{$record->start}}</div>
                                             </div>
                                         </div>
                                     </td>
@@ -108,10 +131,19 @@
                                     <td class="px-6 py-4 text-gray-500">
                                         <div class="flex items-center">
                                             <div class="ml-4">
-                                                <div class="font-medium text-gray-900">9:00pm</div>
+                                                <div class="font-medium text-gray-900">{{$record->end}}</div>
                                             </div>
                                         </div>
                                     </td>
+
+                                    <td class="px-6 py-4 text-gray-500">
+                                        <div class="flex items-center">
+                                            <div class="ml-4">
+                                                <div class="font-medium text-gray-900">{{$record->created_at->format('jS F, Y')}}</div>
+                                            </div>
+                                        </div>
+                                    </td>
+
 
 
                                     <td class="px-6 py-4">
@@ -125,7 +157,7 @@
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                           d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                                 </svg>
-                                                Edit Member
+                                                Edit
                                             </button>
                                             <a href="patients/file/add"
                                                class="inline-flex items-center px-3 py-1.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200">
@@ -139,6 +171,7 @@
                                         </div>
                                     </td>
                                 </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
