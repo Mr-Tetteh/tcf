@@ -17,7 +17,7 @@ class Gallery extends Component
 
     protected $rules = [
         'name' => 'required',
-        'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'image' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
     ];
 
     protected $messages = [
