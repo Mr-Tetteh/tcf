@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('residence');
             $table->string('contact');
             $table->string('church');
+            $table->string('year');
             $table->timestamps();
         });
     }
