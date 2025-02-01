@@ -17,7 +17,6 @@ class RecordManagement extends Component
     protected $rules = [
         'title' => 'required',
         'start' => 'required',
-        'end' => 'required',
     ];
 
     protected $messages = [
