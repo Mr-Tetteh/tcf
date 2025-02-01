@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin;
 
 use App\Models\family_gathering;
+use Carbon\Carbon;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -17,6 +18,9 @@ class FamilyGathering extends Component
     public $contact;
     public $church;
     public $gender;
+    public $year;
+
+
 
     protected $rules = [
         'first_name' => 'required|string',
@@ -50,7 +54,8 @@ class FamilyGathering extends Component
             'residence' => $this->residence,
             'contact' => $this->contact,
             'gender' => $this->gender,
-            'church' => $this->church
+            'church' => $this->church,
+            'year' => Carbon::now()->year,
         ]);
         $this->resetForm();
         session()->flash('message', 'Member has been created successfully.');
@@ -58,7 +63,28 @@ class FamilyGathering extends Component
 
     public function render()
     {
-       $families =  family_gathering::all();
-        return view('livewire.admin.family-gathering', compact('families'));
+        $familiesByYear = family_gathering::select('year')
+            ->groupBy('year')
+            ->get()
+            ->mapWithKeys(function ($family) {
+                return [$family->year => family_gathering::where('year', $family->year)->get()];
+            });
+
+        $males = family_gathering::select('year')
+            ->groupBy('year')
+            ->get()
+            ->mapWithKeys(function ($family) {
+                return [$family->year => family_gathering::where('year', $family->year)->where('gender', 'Male')->count()];
+            });
+
+        // Group females by year
+        $females = family_gathering::select('year')
+            ->groupBy('year')
+            ->get()
+            ->mapWithKeys(function ($family) {
+                return [$family->year => family_gathering::where('year', $family->year)->where('gender', 'Female')->count()];
+            });
+
+        return view('livewire.admin.family-gathering', compact('familiesByYear', 'males', 'females'));
     }
 }

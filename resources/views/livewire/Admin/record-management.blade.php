@@ -25,7 +25,7 @@
                                         </label>
                                         <input
                                             type="text"
-                                            required
+
                                             class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-gray-50 hover:bg-white"
                                             placeholder="Enter the title of the record"
                                             wire:model="title"
@@ -44,7 +44,7 @@
                                         </label>
                                         <input
                                             type="time"
-                                            required
+
                                             class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-gray-50 hover:bg-white"
                                             wire:model="start"
                                         >
@@ -63,7 +63,7 @@
                                         </label>
                                         <input
                                             type="time"
-                                            required
+
                                             class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-gray-50 hover:bg-white"
                                        wire:model="end"
                                         >
