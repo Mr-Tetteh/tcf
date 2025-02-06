@@ -85,7 +85,12 @@
                                 <p class="text-gray-600">Fill out the form below and we'll get back to you soon.</p>
                             </div>
 
-                            <form class="space-y-6">
+                            <form class="space-y-6" wire:submit="create">
+                                @if (session()->has('message'))
+                                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg shadow-md">
+                                        {{ session('message') }}
+                                    </div>
+                                @endif
                                 <div class="space-y-4">
                                     <!-- Name Field -->
                                     <div class="group">
@@ -102,9 +107,15 @@
                                                 name="name"
                                                 class="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-500 focus:ring focus:ring-blue-200 outline-none transition-all duration-200"
                                                 placeholder="John Doe"
-                                                required
+                                                wire:model="name"
                                             >
                                         </div>
+                                        @error('name')
+                                        <div class="text-red-600">
+
+                                            {{$message}}
+                                        </div>
+                                        @enderror
                                     </div>
 
                                     <!-- Email Field -->
@@ -122,9 +133,15 @@
                                                 name="email"
                                                 class="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-500 focus:ring focus:ring-blue-200 outline-none transition-all duration-200"
                                                 placeholder="john@example.com"
-                                                required
+                                                wire:model="email"
                                             >
                                         </div>
+                                        @error('email')
+                                        <div class="text-red-600">
+
+                                            {{$message}}
+                                        </div>
+                                        @enderror
                                     </div>
 
                                     <!-- Phone Field -->
@@ -137,13 +154,20 @@
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                                             </div>
                                             <input
-                                                type="tel"
+                                                type="number"
                                                 id="phone"
                                                 name="phone"
                                                 class="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-500 focus:ring focus:ring-blue-200 outline-none transition-all duration-200"
                                                 placeholder="(123) 456-7890"
+                                                wire:model="phone"
                                             >
                                         </div>
+                                        @error('phone')
+                                        <div class="text-red-600">
+
+                                            {{$message}}
+                                        </div>
+                                        @enderror
                                     </div>
 
                                     <!-- Message Field -->
@@ -161,9 +185,15 @@
                                                 rows="4"
                                                 class="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-500 focus:ring focus:ring-blue-200 outline-none transition-all duration-200 resize-none"
                                                 placeholder="How can we help you?"
-                                                required
+                                                wire:model="message"
                                             ></textarea>
                                         </div>
+                                        @error('message')
+                                        <div class="text-red-600">
+
+                                            {{$message}}
+                                        </div>
+                                        @enderror
                                     </div>
                                 </div>
 
