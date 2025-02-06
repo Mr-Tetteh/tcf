@@ -17,5 +17,6 @@ Route::middleware('auth')->group(function () {
         Route::get('record_management', RecordManagement::class)->name('admin.record_management');
         Route::get('/finance', \App\Livewire\Admin\Finance::class)->name('admin.finance');
         Route::get('/online_translations', \App\Livewire\Admin\Online::class)->name('admin.online');
+        Route::get('contact', \App\Livewire\Admin\Contact::class)->name('admin.contact');
     });
 });
