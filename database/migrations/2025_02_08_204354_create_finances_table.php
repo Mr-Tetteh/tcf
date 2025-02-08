@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->decimal('amount');
+            $table->unsignedBigInteger('user_id');
+            $table->integer('edited_by')->nullable()->constrained('users');
+            $table->boolean('edited')->default(false);
             $table->timestamps();
         });
     }

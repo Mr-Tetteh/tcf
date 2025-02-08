@@ -4,15 +4,15 @@
                 <div class="flex justify-between items-center">
                     <div>
                         <h1 class="text-3xl font-bold text-gray-800">Dashboard</h1>
-                        <p class="text-gray-600 mt-1">Welcome back, Daniel</p>
+                        <p class="text-gray-600 mt-1">Welcome back, {{\Illuminate\Support\Facades\Auth::user()->first_name}}</p>
                     </div>
 
                     <div class="flex items-center gap-4">
                         <div class="flex items-center">
                             <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white font-semibold">
-                                OP
+                                {{\Illuminate\Support\Facades\Auth::user()->first_name[0]}}{{\Illuminate\Support\Facades\Auth::user()->last_name[0]}}
                             </div>
-                            <span class="ml-3 font-medium text-gray-700">Daniel</span>
+                            <span class="ml-3 font-medium text-gray-700">{{\Illuminate\Support\Facades\Auth::user()->first_name}}</span>
                         </div>
                         <form method="POST" action="{{ route('logout') }}" class="px-4 py-2 text-red-600 rounded-lg  transition-colors duration-200 flex items-center gap-2">
                             @csrf
