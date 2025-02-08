@@ -7,7 +7,7 @@
 
                 <div class="lg:w-5/12">
                     <!-- Form Container -->
-                    <form class="max-w-3xl mx-auto" wire:submit="create">
+                    <form class="max-w-3xl mx-auto" wire:submit="{{$isEdit ? 'update' : 'create'}}">
                         <!-- Header -->
                         <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-t-xl p-6">
                             <h2 class="text-2xl font-bold text-white">Finance Management</h2>
@@ -78,7 +78,7 @@
 
                 <div class="lg:w-7/12">
                     <div class="bg-white rounded-xl shadow-sm p-6">
-                        <div class="text-xl font-semibold text-gray-800 mb-6">Uploaded Finance Records</div>
+                        <div class="text-xl font-semibold text-gray-800 mb-6">{{$isEdit ? "Update Finical  Record" : "Uploaded Finance Records"}} </div>
                         <div class="overflow-x-auto">
                             <table class="w-full">
                                 <thead class="bg-gray-50">
@@ -86,9 +86,13 @@
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Record Title
                                     </th>
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Amount</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Posted By</th>
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Date</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Updated By</th>
+
 
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Action</th>
+
 
 
                                 </tr>
@@ -112,6 +116,14 @@
                                                 </div>
                                             </div>
                                         </td>
+
+                                        <td class="px-6 py-4 text-gray-500">
+                                            <div class="flex items-center">
+                                                <div class="ml-4">
+                                                    <div class="font-medium text-gray-900">{{$data->user->first_name}} {{$data->user->last_name}}</div>
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td class="px-6 py-4 text-gray-500">
                                             <div class="flex items-center">
                                                 <div class="ml-4">
@@ -120,10 +132,23 @@
                                             </div>
                                         </td>
 
+                                        <td class="px-6 py-4 text-gray-500">
+                                            <div class="flex items-center">
+                                                <div class="ml-4">
+                                                    @if($data->edited == true)
+                                                        <div class="font-medium text-gray-900">{{$data->editor->first_name}} {{$data->editor->last_name}}</div>
+                                                    @else
+                                                        <div class="font-medium text-gray-900">N/A</div>
+
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </td>
 
                                         <td class="px-6 py-4">
                                             <div class="flex space-x-3">
                                                 <button
+                                                    wire:click="edit({{$data->id}})"
                                                     class="inline-flex items-center px-3 py-1.5 bg-amber-100 text-amber-700 rounded-lg hover:bg-amber-200 transition-colors duration-200">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5"
                                                          fill="none"
@@ -137,7 +162,8 @@
                                                     </svg>
                                                     Edit
                                                 </button>
-                                                <a href="patients/file/add"
+                                                @if(\Illuminate\Support\Facades\Auth::user()->role == 'admin')
+                                                <button wire:click="delete({{$data->id}})"
                                                    class="inline-flex items-center px-3 py-1.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5"
                                                          fill="none"
@@ -147,7 +173,8 @@
                                                               d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                                                     </svg>
                                                     Delete
-                                                </a>
+                                                </button>
+                                                @endif
                                             </div>
                                         </td>
                                     </tr>
