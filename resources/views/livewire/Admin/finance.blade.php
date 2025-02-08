@@ -7,7 +7,7 @@
 
                 <div class="lg:w-5/12">
                     <!-- Form Container -->
-                    <form class="max-w-3xl mx-auto">
+                    <form class="max-w-3xl mx-auto" wire:submit="create">
                         <!-- Header -->
                         <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-t-xl p-6">
                             <h2 class="text-2xl font-bold text-white">Finance Management</h2>
@@ -28,17 +28,33 @@
                                             type="text"
                                             class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-gray-50 hover:bg-white"
                                             placeholder="Enter the title of the record"
+                                            wire:model="title"
                                         >
                                     </div>
+                                    <div class="text-red-600">
+                                        @error('title')
+                                        {{$message}}
+                                        @enderror
+                                    </div>
+
 
                                     <div class="relative">
                                         <label class="text-sm font-medium text-gray-700 block mb-2">
                                             Amount <span class="text-red-500">*</span>
                                         </label>
                                         <input
-                                            type="number"
                                             class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-gray-50 hover:bg-white"
-                                        >
+                                            type="number"
+                                            step="0.01"
+                                            min="0"
+                                            placeholder="0.00"
+                                            wire:model="amount"
+                                           >
+                                    </div>
+                                    <div class="text-red-600">
+                                        @error('amount')
+                                        {{$message}}
+                                        @enderror
                                     </div>
 
                                     <!-- Submit Button -->
@@ -70,61 +86,72 @@
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Record Title
                                     </th>
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Amount</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Date</th>
+
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Action</th>
 
 
                                 </tr>
                                 </thead>
                                 <tbody class="divide-y divide-gray-100">
-                                <tr class="hover:bg-gray-50 transition-colors duration-200">
-                                    <td class="px-6 py-4">
-                                        <div class="flex items-center">
-                                            <div class="ml-4">
-                                                <div class="font-medium text-gray-900">How Angles Work</div>
+                                @foreach($datas as $data)
+                                    <tr class="hover:bg-gray-50 transition-colors duration-200">
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center">
+                                                <div class="ml-4">
+                                                    <div class="font-medium text-gray-900">{{$data->name}}</div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
+                                        </td>
 
 
-                                    <td class="px-6 py-4 text-gray-500">
-                                        <div class="flex items-center">
-                                            <div class="ml-4">
-                                                <div class="font-medium text-gray-900">9:00pm</div>
+                                        <td class="px-6 py-4 text-gray-500">
+                                            <div class="flex items-center">
+                                                <div class="ml-4">
+                                                    <div class="font-medium text-gray-900">{{$data->amount}}</div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
+                                        </td>
+                                        <td class="px-6 py-4 text-gray-500">
+                                            <div class="flex items-center">
+                                                <div class="ml-4">
+                                                    <div class="font-medium text-gray-900">{{$data->created_at->format('jS D Y')}}</div>
+                                                </div>
+                                            </div>
+                                        </td>
 
 
-                                    <td class="px-6 py-4">
-                                        <div class="flex space-x-3">
-                                            <button
-                                                class="inline-flex items-center px-3 py-1.5 bg-amber-100 text-amber-700 rounded-lg hover:bg-amber-200 transition-colors duration-200">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5"
-                                                     fill="none"
-                                                     viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                          stroke-width="2"
-                                                          d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                          stroke-width="2"
-                                                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                                </svg>
-                                                Edit Member
-                                            </button>
-                                            <a href="patients/file/add"
-                                               class="inline-flex items-center px-3 py-1.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5"
-                                                     fill="none"
-                                                     viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                          stroke-width="2"
-                                                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                                                </svg>
-                                                Delete
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        <td class="px-6 py-4">
+                                            <div class="flex space-x-3">
+                                                <button
+                                                    class="inline-flex items-center px-3 py-1.5 bg-amber-100 text-amber-700 rounded-lg hover:bg-amber-200 transition-colors duration-200">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5"
+                                                         fill="none"
+                                                         viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                              stroke-width="2"
+                                                              d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                              stroke-width="2"
+                                                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                                    </svg>
+                                                    Edit
+                                                </button>
+                                                <a href="patients/file/add"
+                                                   class="inline-flex items-center px-3 py-1.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5"
+                                                         fill="none"
+                                                         viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                              stroke-width="2"
+                                                              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                                    </svg>
+                                                    Delete
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
