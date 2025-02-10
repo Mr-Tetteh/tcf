@@ -5,7 +5,13 @@
             <div class="flex flex-col lg:flex-row gap-8">
 
                 <div class="lg:w-5/12">
-                    <form wire:submit="create" class="bg-white rounded-xl shadow-sm p-6 space-y-6">
+                    @if (session()->has('message'))
+                        <div
+                            class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg shadow-md">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+                    <form wire:submit="{{$isEdit ? "update" : "create"}}" class="bg-white rounded-xl shadow-sm p-6 space-y-6">
                         <div class="text-xl font-semibold text-gray-800 mb-6">Members Registration </div>
 
                         <!-- Name Fields Grid -->
@@ -266,6 +272,7 @@
                                     <td class="px-6 py-4">
                                         <div class="flex space-x-3">
                                             <button
+                                                wire:click="edit({{$member->id}})"
                                                 class="inline-flex items-center px-3 py-1.5 bg-amber-100 text-amber-700 rounded-lg hover:bg-amber-200 transition-colors duration-200">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" fill="none"
                                                      viewBox="0 0 24 24" stroke="currentColor">
@@ -276,7 +283,7 @@
                                                 </svg>
                                                 Edit
                                             </button>
-                                            <a href="patients/file/add"
+                                            <button wire:click="delete({{$member->id}})"
                                                class="inline-flex items-center px-3 py-1.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" fill="none"
                                                      viewBox="0 0 24 24" stroke="currentColor">
@@ -284,7 +291,7 @@
                                                           d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                                                 </svg>
                                                 Delete
-                                            </a>
+                                            </button>
                                         </div>
                                     </td>
                                 </tr>
