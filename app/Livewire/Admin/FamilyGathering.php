@@ -73,9 +73,17 @@ class FamilyGathering extends Component
             'gender' => $this->gender,
             'church' => $this->church
         ]);
-        $this->isEdit = false;
         $this->resetForm();
         session()->flash('message', 'Family gathering details updated successfully.');
+        $this->isEdit = false;
+
+    }
+
+    public function delete($id)
+    {
+        family_gathering::findOrFail($id)->delete();
+        session()->flash('message', 'Family gathering details deleted successfully.');
+
     }
     public function create()
     {

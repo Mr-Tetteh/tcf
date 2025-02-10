@@ -5,6 +5,12 @@
             <div class="flex flex-col lg:flex-row gap-8">
 
                 <div class="lg:w-5/12">
+                    @if (session()->has('message'))
+                        <div
+                            class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg shadow-md">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     <form class="max-w-3xl mx-auto" wire:submit.prevent="create" enctype="multipart/form-data">
                         <!-- Header -->
                         <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-t-xl p-6">
