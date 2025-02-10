@@ -12,6 +12,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('send', function () {
+    return sendWithSMSONLINEGH('233559724772', 'Hello', 'GABSAB');
+});
+
 require __DIR__.'/auth.php';
 require __DIR__.'/admin_route.php';
 require __DIR__.'/user_route.php';
