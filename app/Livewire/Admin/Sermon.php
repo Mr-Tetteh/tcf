@@ -9,12 +9,14 @@ use Livewire\WithFileUploads;
 class Sermon extends Component
 {
     use WithFileUploads;
+
     #[Layout('layout.admin.partials.website-base-admin')]
     public $title;
     public $slug;
     public $preacher;
     public $sermon;
     public $date;
+    public $isEdit = false;
 
     public function resetForm()
     {
@@ -28,28 +30,40 @@ class Sermon extends Component
     protected $rules = [
         'title' => 'required',
         'preacher' => 'required',
-        'sermon' => 'required|file|mimes:mp3,wav,ogg|max:10240', // Max file size 10MB
-
+        'sermon' => 'required|file|mimes:mp3,wav,ogg|max:921600',
         'date' => 'required',
 
     ];
 
+    public function edit($id)
+    {
+        $sermon = \App\Models\Sermon::findOrFail($id);
+
+        $this->sermon = $sermon;
+        $this->title = $sermon->title;
+        $this->preacher = $sermon->preacher;
+        $this->date = $sermon->date;
+        $this->isEdit = true;
+    }
+
     public function create()
     {
+
         $this->validate();
 
-        $sermonPath = $this->sermon->store('sermon', 'public');
-
-        \App\Models\Sermon::create([
-            'title' => $this->title,
-            'preacher' => $this->preacher,
-            'sermon' => $sermonPath,
-            'date' => $this->date,
-
-        ]);
-        $this->resetForm();
-        session()->flash('message', 'Sermon uploaded successfully.');
-
+        try {
+            $sermonPath = $this->sermon->store('sermon', 'public');
+            \App\Models\Sermon::create([
+                'title' => $this->title,
+                'preacher' => $this->preacher,
+                'sermon' => $sermonPath,
+                'date' => $this->date,
+            ]);
+            $this->resetForm();
+            session()->flash('message', 'Sermon uploaded successfully.');
+        } catch (\Exception $e) {
+            session()->flash('error', 'Upload failed: ' . $e->getMessage());
+        }
     }
 
 
