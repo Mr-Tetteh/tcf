@@ -10,7 +10,6 @@ use Livewire\Component;
 class FamilyGathering extends Component
 {
     #[Layout('layout.Admin.partials.website-base-admin')]
-
     public $first_name;
     public $last_name;
     public $other_names;
@@ -19,7 +18,8 @@ class FamilyGathering extends Component
     public $church;
     public $gender;
     public $year;
-
+    public $family_id;
+    public $isEdit = false;
 
 
     protected $rules = [
@@ -43,6 +43,39 @@ class FamilyGathering extends Component
         $this->gender = '';
         $this->church = '';
 
+    }
+
+    public function edit($id)
+    {
+        $family = family_gathering::findOrFail($id);
+        $this->family_id = $family->id;
+        $this->first_name = $family->first_name;
+        $this->last_name = $family->last_name;
+        $this->other_names = $family->other_names;
+        $this->residence = $family->residence;
+        $this->contact = $family->contact;
+        $this->gender = $family->gender;
+        $this->church = $family->church;
+        $this->isEdit = true;
+
+    }
+
+    public function update()
+    {
+        $this->validate();
+        $family = family_gathering::findOrFail($this->family_id);
+        $family->update([
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'other_names' => $this->other_names,
+            'residence' => $this->residence,
+            'contact' => $this->contact,
+            'gender' => $this->gender,
+            'church' => $this->church
+        ]);
+        $this->isEdit = false;
+        $this->resetForm();
+        session()->flash('message', 'Family gathering details updated successfully.');
     }
     public function create()
     {
