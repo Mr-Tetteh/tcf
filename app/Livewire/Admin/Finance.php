@@ -71,6 +71,7 @@ class Finance extends Component
     public function delete($id)
     {
         \App\Models\Finance::findOrFail($id)->delete();
+        session()->flash('message', 'Financial record Deleted Successfully.');
 
     }
 
