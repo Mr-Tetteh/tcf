@@ -5,6 +5,12 @@
         <div class="container mx-auto">
             <div class="flex flex-col lg:flex-row gap-8">
                 <div class="lg:w-5/12">
+                    @if (session()->has('message'))
+                        <div
+                            class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg shadow-md">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     <form wire:submit="{{$isEdit ? "update": "create" }}" class="bg-white rounded-xl shadow-sm p-6 space-y-6">
 
                         <div class="text-xl font-semibold text-gray-800 mb-6">Family Gathering {{\Carbon\Carbon::now()->year}}
@@ -168,7 +174,7 @@
                                 type="submit"
                                 class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200 font-medium text-lg"
                             >
-                                Submit Registration
+                               {{$isEdit ? "Update Registration" : "Submit Registration"}}
                             </button>
                         </div>
                     </form>
@@ -183,6 +189,7 @@
                                 <table class="w-full border-collapse border border-gray-300 mt-3">
                                     <thead class="bg-gray-50">
                                     <tr>
+
                                         <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Full Name</th>
                                         <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Residence</th>
                                         <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Contact</th>
@@ -220,6 +227,7 @@
                                                     Edit
                                                 </button>
                                                 <button
+                                                    wire:click="delete({{$family->id}})"
                                                     class="inline-flex items-center px-3 py-1.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" fill="none"
                                                          viewBox="0 0 24 24" stroke="currentColor">

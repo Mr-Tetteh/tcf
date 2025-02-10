@@ -21,6 +21,12 @@
             <div class="bg-white rounded-xl shadow-sm border border-gray-100">
                 <!-- Card Header -->
                 <div class="border-b border-gray-100 px-6 py-4">
+                    @if (session()->has('message'))
+                        <div
+                            class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg shadow-md">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     @if($isEdit)
                     <form
                         class="bg-white shadow-2xl rounded-2xl overflow-hidden max-w-xl mx-auto transform transition-all duration-300 hover:scale-[1.01]"

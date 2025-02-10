@@ -6,6 +6,12 @@
             <div class="flex flex-col lg:flex-row gap-8">
 
                 <div class="lg:w-5/12">
+                    @if (session()->has('message'))
+                        <div
+                            class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg shadow-md">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     <!-- Form Container -->
                     <form class="max-w-3xl mx-auto" wire:submit="{{$isEdit ? 'update' : 'create'}}">
                         <!-- Header -->
