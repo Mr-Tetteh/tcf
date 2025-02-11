@@ -11,7 +11,8 @@
                         Elevate your spirit through powerful messages that transform lives
                     </p>
                     <div class="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
-                        <span class="inline-flex items-center rounded-full bg-purple-100 px-4 py-1 text-sm font-medium text-purple-700">
+                        <span
+                            class="inline-flex items-center rounded-full bg-purple-100 px-4 py-1 text-sm font-medium text-purple-700">
                             Latest Uploads
                         </span>
                     </div>
@@ -30,40 +31,47 @@
 
             <!-- Sermon Card -->
             <div class="space-y-12 max-w-5xl mx-auto">
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-                    <div class="flex flex-col lg:flex-row">
-                        <div class="lg:w-2/5">
-                            <div class="relative h-full">
-                                <img class="w-full h-64 lg:h-full object-cover"
-                                     src="../../../images/png-clipart-headphones-computer-icons-headphones-electronics-sound.png" alt="Sermon"/>
-                                <div class="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20"></div>
-                            </div>
-                        </div>
-                        <div class="lg:w-3/5 p-8">
-                            <div class="flex items-center gap-4 mb-4">
-                                <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Date</span>
-                                <span class="text-gray-500">Oct 29, 2024</span>
-                            </div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4">How Angels Work</h3>
-                            <div class="flex items-center gap-4 mb-6">
-                                <div>
-                                    <p class="text-sm text-gray-500"><i>Preacher </i> </p>
-                                    <p class="font-medium text-gray-900">Mark Manu</p>
+                @foreach($datas as $data)
+                    <div
+                        class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                        <div class="flex flex-col lg:flex-row">
+                            <div class="lg:w-2/5">
+                                <div class="relative h-full">
+                                    <img class="w-full h-64 lg:h-full object-cover"
+                                         src="../../../images/png-clipart-headphones-computer-icons-headphones-electronics-sound.png"
+                                         alt="Sermon"/>
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20"></div>
                                 </div>
                             </div>
-                            <!-- Audio Player -->
-                            <div class="bg-gray-50 rounded-xl p-4">
-                                <div class="flex items-center gap-4">
-                                    <audio controls>
-                                        <source src="../../sermons/kenny_G.mp3" type="audio/mpeg">
-                                    </audio>
+                            <div class="lg:w-3/5 p-8">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <span
+                                        class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Date</span>
+                                    <span class="text-gray-500">{{$data->created_at->format('jS D Y')}}</span>
+                                </div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">{{$data->title}}</h3>
+                                <div class="flex items-center gap-4 mb-6">
+                                    <div>
+                                        <p class="text-sm text-gray-500"><i>Preacher </i></p>
+                                        <p class="font-medium text-gray-900">{{$data->preacher}}</p>
+                                    </div>
+                                </div>
+                                <!-- Audio Player -->
+                                <div class="bg-gray-50 rounded-xl p-4">
+                                    <div class="flex items-center gap-4">
+                                        <audio controls>
+                                            <source src="{{ Storage::url($data->sermon) }}" type="audio/mpeg">
+
+                                        </audio>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
+                @endforeach
+                {{$datas->links()}}
+            </div>
         </div>
     </section>
 </div>
