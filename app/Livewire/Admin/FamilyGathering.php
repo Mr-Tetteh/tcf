@@ -135,27 +135,17 @@ class FamilyGathering extends Component
 
     public function render()
     {
-        $familiesByYear = \App\Models\FamilyGathering::select('year')
-            ->groupBy('year')
-            ->get()
-            ->mapWithKeys(function ($family) {
-                return [$family->year => \App\Models\FamilyGathering::where('year', $family->year)->get()];
-            });
 
-        $males = \App\Models\FamilyGathering::select('year')
-            ->groupBy('year')
-            ->get()
-            ->mapWithKeys(function ($family) {
-                return [$family->year => \App\Models\FamilyGathering::where('year', $family->year)->where('gender', 'Male')->count()];
-            });
 
-        // Group females by year
-        $females = \App\Models\FamilyGathering::select('year')
-            ->groupBy('year')
-            ->get()
-            ->mapWithKeys(function ($family) {
-                return [$family->year => \App\Models\FamilyGathering::where('year', $family->year)->where('gender', 'Female')->count()];
-            });
+        $current_year = Carbon::now()->year;
+
+        $familiesByYear =  \App\Models\FamilyGathering::where('year', $current_year)->get();
+
+        $males =  \App\Models\FamilyGathering::where('year', $current_year)->where('gender', 'Male')->count();
+        $females =  \App\Models\FamilyGathering::where('year', $current_year)->where('gender', 'Female')->count();
+
+
+
 
         return view('livewire.admin.family-gathering', compact('familiesByYear', 'males', 'females'));
     }

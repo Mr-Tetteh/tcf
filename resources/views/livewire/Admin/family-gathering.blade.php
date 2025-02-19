@@ -189,60 +189,71 @@
                         </div>
                     </form>
                 </div>
-                <div class="lg:w-7/12">
-                    <div class="bg-white rounded-xl shadow-sm p-6">
-                        <div class="text-xl font-semibold text-gray-800 mb-6">Registered Members
-                            for {{\Carbon\Carbon::now()->year}}</div>
-                        <div class="overflow-x-auto">
-                            @foreach($familiesByYear as $year => $families)
-                                <h2 class="text-lg font-bold text-gray-700 mt-6">Year: {{ $year }}</h2>
-                                <table class="w-full border-collapse border border-gray-300 mt-3">
+                <div class="lg:w-7/12 ">
+                    <div class="max-w-7xl mx-auto">
+                        <div class="bg-white rounded-xl shadow-lg p-6 space-y-6">
+                            <!-- Header Section -->
+                            <div class="flex justify-between items-center border-b border-gray-200 pb-6">
+                                <div>
+                                    <h2 class="text-2xl font-bold text-gray-900">Registered Members</h2>
+                                    <p class="mt-1 text-sm text-gray-500">For the year {{2025}}</p>
+                                </div>
+                                <div class="flex space-x-4">
+                                    <div class="bg-blue-50 rounded-lg px-4 py-2">
+                                        <span class="text-sm font-medium text-blue-600">Males: {{$males}}</span>
+                                    </div>
+                                    <div class="bg-pink-50 rounded-lg px-4 py-2">
+                                        <span class="text-sm font-medium text-pink-600">Females: {{$females}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Table Section -->
+                            <div class="overflow-x-auto rounded-lg border border-gray-200">
+                                <table class="min-w-full divide-y divide-gray-200">
                                     <thead class="bg-gray-50">
                                     <tr>
-
-                                        <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Full Name</th>
-                                        <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Residence</th>
-                                        <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Contact</th>
-                                        <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Gender</th>
-                                        <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Church</th>
-                                        <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Actions</th>
+                                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Full Name</th>
+                                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Residence</th>
+                                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Contact</th>
+                                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Gender</th>
+                                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Church</th>
+                                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Actions</th>
                                     </tr>
                                     </thead>
-                                    <div class="flex flex-row gap-10">
-                                        @foreach($familiesByYear as $year => $families)
-                                            <h2>Year {{ $year }}</h2>
-                                            Males: {{ $males[$year] }}
-                                            Females: {{ $females[$year] }}
-                                        @endforeach
-                                    </div>
-                                    <tbody class="divide-y divide-gray-100">
-                                    @foreach($families as $family)
-                                        <tr class="hover:bg-gray-50 transition-colors duration-200">
-                                            <td class="px-6 py-4">{{ $family->first_name }} {{ $family->other_names }} {{ $family->last_name }}</td>
-                                            <td class="px-6 py-4">{{ $family->residence }}</td>
-                                            <td class="px-6 py-4">{{ $family->contact }}</td>
-                                            <td class="px-6 py-4">{{ $family->gender }}</td>
-                                            <td class="px-6 py-4">{{ $family->church }}</td>
-                                            <td class="px-6 py-4">
-                                                <button
-                                                    wire:click="edit({{$family->id}})"
-                                                    class="inline-flex items-center px-3 py-1.5 bg-amber-100 text-amber-700 rounded-lg hover:bg-amber-200 transition-colors duration-200">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" fill="none"
-                                                         viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                              d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                    @foreach($familiesByYear as $family)
+                                        <tr class="hover:bg-gray-50 transition-all duration-200">
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="text-sm font-medium text-gray-900">{{ $family->first_name }} {{ $family->other_names }} {{ $family->last_name }}</div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="text-sm text-gray-600">{{ $family->residence }}</div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="text-sm text-gray-600">{{ $family->contact }}</div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full
+                                    {{ $family->gender == 'Male' ? 'bg-blue-100 text-blue-800' : 'bg-pink-100 text-pink-800' }}">
+                                    {{ $family->gender }}
+                                </span>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="text-sm text-gray-600">{{ $family->church }}</div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                                                <button wire:click="edit({{$family->id}})"
+                                                        class="inline-flex items-center px-3 py-1.5 bg-indigo-50 text-indigo-700 rounded-lg hover:bg-indigo-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                                     </svg>
                                                     Edit
                                                 </button>
-                                                <button
-                                                    wire:click="delete({{$family->id}})"
-                                                    class="inline-flex items-center px-3 py-1.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" fill="none"
-                                                         viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                                <button wire:click="delete({{$family->id}})"
+                                                        class="inline-flex items-center px-3 py-1.5 bg-red-50 text-red-700 rounded-lg hover:bg-red-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                                     </svg>
                                                     Delete
                                                 </button>
@@ -251,9 +262,7 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-                            @endforeach
-
-
+                            </div>
                         </div>
                     </div>
                 </div>
