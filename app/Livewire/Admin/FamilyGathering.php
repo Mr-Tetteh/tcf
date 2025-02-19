@@ -2,14 +2,20 @@
 
 namespace App\Livewire\Admin;
 
-use App\Models\family_gathering;
+
+use App\Imports\FamilyGatheringImport;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use Livewire\WithFileUploads;
+use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\Mime\Message;
 
 class FamilyGathering extends Component
 {
+    use WithFileUploads;
+
     #[Layout('layout.Admin.partials.website-base-admin')]
     public $first_name;
     public $last_name;
@@ -22,6 +28,9 @@ class FamilyGathering extends Component
     public $family_id;
     public $isEdit = false;
 
+    public $csv;
+    public $uploadError = '';
+    public $uploadSuccess = '';
 
     protected $rules = [
         'first_name' => 'required|string',
@@ -43,12 +52,25 @@ class FamilyGathering extends Component
         $this->contact = '';
         $this->gender = '';
         $this->church = '';
+        $this->csv = '';
 
     }
 
+    public function import()
+    {
+        $extension = $this->csv->getClientOriginalExtension();
+        $filePath = $this->csv->store('temp');
+        $fullPath = Storage::path($filePath);
+
+        Excel::import(new FamilyGatheringImport, $fullPath);
+        return redirect('/admin/family_gathering')->with('success', 'All good!');
+
+
+
+    }
     public function edit($id)
     {
-        $family = family_gathering::findOrFail($id);
+        $family = \App\Models\FamilyGathering::findOrFail($id);
         $this->family_id = $family->id;
         $this->first_name = $family->first_name;
         $this->last_name = $family->last_name;
@@ -64,7 +86,7 @@ class FamilyGathering extends Component
     public function update()
     {
         $this->validate();
-        $family = family_gathering::findOrFail($this->family_id);
+        $family = \App\Models\FamilyGathering::findOrFail($this->family_id);
         $family->update([
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
@@ -82,14 +104,16 @@ class FamilyGathering extends Component
 
     public function delete($id)
     {
-        family_gathering::findOrFail($id)->delete();
+        \App\Models\FamilyGathering::findOrFail($id)->delete();
         session()->flash('message', 'Family gathering details deleted successfully.');
 
     }
+
+
     public function create()
     {
         $this->validate();
-        family_gathering::create([
+        \App\Models\FamilyGathering::create([
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'other_names' => $this->other_names,
@@ -97,7 +121,6 @@ class FamilyGathering extends Component
             'contact' => '233'.substr($this->contact, -9),
             'gender' => $this->gender,
             'church' => $this->church,
-            'year' => Carbon::now()->year,
         ]);
         \sendWithSMSONLINEGH('233'.substr($this->contact, -9),  'Hello '. ($this->gender == 'male' ? 'Mr' : "Mrs "). $this->first_name . ' ' . $this->last_name . ', ' .
             'We are delighted to welcome you to the ' . Carbon::now()->year . ' Annual Family Gathering! ' .
@@ -112,27 +135,17 @@ class FamilyGathering extends Component
 
     public function render()
     {
-        $familiesByYear = family_gathering::select('year')
-            ->groupBy('year')
-            ->get()
-            ->mapWithKeys(function ($family) {
-                return [$family->year => family_gathering::where('year', $family->year)->get()];
-            });
 
-        $males = family_gathering::select('year')
-            ->groupBy('year')
-            ->get()
-            ->mapWithKeys(function ($family) {
-                return [$family->year => family_gathering::where('year', $family->year)->where('gender', 'Male')->count()];
-            });
 
-        // Group females by year
-        $females = family_gathering::select('year')
-            ->groupBy('year')
-            ->get()
-            ->mapWithKeys(function ($family) {
-                return [$family->year => family_gathering::where('year', $family->year)->where('gender', 'Female')->count()];
-            });
+        $current_year = Carbon::now()->year;
+
+        $familiesByYear =  \App\Models\FamilyGathering::where('year', $current_year)->get();
+
+        $males =  \App\Models\FamilyGathering::where('year', $current_year)->where('gender', 'Male')->count();
+        $females =  \App\Models\FamilyGathering::where('year', $current_year)->where('gender', 'Female')->count();
+
+
+
 
         return view('livewire.admin.family-gathering', compact('familiesByYear', 'males', 'females'));
     }
