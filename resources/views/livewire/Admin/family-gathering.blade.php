@@ -5,12 +5,22 @@
         <div class="container mx-auto">
             <div class="flex flex-col lg:flex-row gap-8">
                 <div class="lg:w-5/12">
+
+                    <div>
+                        <form wire:submit.prevent="import">
+                            @csrf
+                            <input type="file" wire:model="csv">
+                            <button type="submit">Upload</button>
+                        </form>
+
+                    </div>
                     @if (session()->has('message'))
                         <div
                             class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg shadow-md">
                             {{ session('message') }}
                         </div>
                     @endif
+
                     <form wire:submit="{{$isEdit ? "update": "create" }}" class="bg-white rounded-xl shadow-sm p-6 space-y-6">
 
                         <div class="text-xl font-semibold text-gray-800 mb-6">Family Gathering {{\Carbon\Carbon::now()->year}}
@@ -245,7 +255,6 @@
 
 
                         </div>
-
                     </div>
                 </div>
             </div>
