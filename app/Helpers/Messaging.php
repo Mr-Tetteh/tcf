@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Mail;
 
 
 
-function sendWithSMSONLINEGH($receiver,string $massage,string $sender = "TCF")
+function sendWithSMSONLINEGH($receiver,string $massage,string $sender = "GABSAB")
 {
     try {
         $url = env('SMS_GH_ONLINE_BASE_URL') . '/v5/sms/send';

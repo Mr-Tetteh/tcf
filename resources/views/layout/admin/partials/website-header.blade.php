@@ -101,6 +101,9 @@
                     <li>
                         <a href="{{route('admin.record_management')}}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Record Management</a>
                     </li>
+                    <li>
+                        <a href="{{route('admin.familyGatheringAllYears')}}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Family Gathering registration </a>
+                    </li>
                 </ul>
             </li>
 
@@ -121,11 +124,14 @@
                     <li>
                         <a href="{{route('admin.finance')}}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Record Finical</a>
                     </li>
+
                     <li>
                         <a href="{{route('admin.online')}}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Online Transaction</a>
                     </li>
                 </ul>
             </li>
+
+
 
             <li>
                 <a href="{{route('home')}}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">

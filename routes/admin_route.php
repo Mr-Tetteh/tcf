@@ -18,5 +18,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/finance', \App\Livewire\Admin\Finance::class)->name('admin.finance');
         Route::get('/online_translations', \App\Livewire\Admin\Online::class)->name('admin.online');
         Route::get('contact', \App\Livewire\Admin\Contact::class)->name('admin.contact');
+        Route::get('/registration_by_all_years',\App\Livewire\Admin\FamilyGatheringAllYears::class )->name('admin.familyGatheringAllYears');
     });
 });
