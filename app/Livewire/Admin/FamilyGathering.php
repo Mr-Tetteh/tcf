@@ -35,9 +35,8 @@ class FamilyGathering extends Component
     protected $rules = [
         'first_name' => 'required|string',
         'last_name' => 'required|string',
-        'other_names' => 'required|string',
         'residence' => 'required|string',
-        'contact' => 'required|digits:10',
+        'contact' => 'required|digits_between:9,10',
         'gender' => 'required|string',
         'church' => 'required|string',
 
@@ -58,6 +57,14 @@ class FamilyGathering extends Component
 
     public function import()
     {
+        $this->validate([
+            'csv' => 'required|mimes:csv,xlsx,xlsm,xls'
+        ], [
+                'csv.required' => 'File can not be uploaded empty.',
+                'csv.mimes' => 'The file must be a CSV, XLSX, XLSM, or XLS.'
+            ]
+        );
+
         $extension = $this->csv->getClientOriginalExtension();
         $filePath = $this->csv->store('temp');
         $fullPath = Storage::path($filePath);
@@ -66,8 +73,8 @@ class FamilyGathering extends Component
         return redirect('/admin/family_gathering')->with('success', 'All good!');
 
 
-
     }
+
     public function edit($id)
     {
         $family = \App\Models\FamilyGathering::findOrFail($id);
@@ -110,6 +117,12 @@ class FamilyGathering extends Component
     }
 
 
+    public function export()
+    {
+        return response()->download(public_path('downloads/Annual Family Gathering Registration .xlsx'));
+
+    }
+
     public function create()
     {
         $this->validate();
@@ -118,11 +131,11 @@ class FamilyGathering extends Component
             'last_name' => $this->last_name,
             'other_names' => $this->other_names,
             'residence' => $this->residence,
-            'contact' => '233'.substr($this->contact, -9),
+            'contact' => '233' . substr($this->contact, -9),
             'gender' => $this->gender,
             'church' => $this->church,
         ]);
-        \sendWithSMSONLINEGH('233'.substr($this->contact, -9),  'Hello '. ($this->gender == 'male' ? 'Mr' : "Mrs "). $this->first_name . ' ' . $this->last_name . ', ' .
+        \sendWithSMSONLINEGH('233' . substr($this->contact, -9), 'Hello ' . ($this->gender == 'male' ? 'Mr' : "Mrs ") . $this->first_name . ' ' . $this->last_name . ', ' .
             'We are delighted to welcome you to the ' . Carbon::now()->year . ' Annual Family Gathering! ' .
             'Get ready for a time of joy, connection, and spiritual renewal. ' .
             'May your stay be filled with blessings, laughter, and the presence of God.');
@@ -139,12 +152,10 @@ class FamilyGathering extends Component
 
         $current_year = Carbon::now()->year;
 
-        $familiesByYear =  \App\Models\FamilyGathering::where('year', $current_year)->get();
+        $familiesByYear = \App\Models\FamilyGathering::where('year', $current_year)->latest()->paginate(10);
 
-        $males =  \App\Models\FamilyGathering::where('year', $current_year)->where('gender', 'Male')->count();
-        $females =  \App\Models\FamilyGathering::where('year', $current_year)->where('gender', 'Female')->count();
-
-
+        $males = \App\Models\FamilyGathering::where('year', $current_year)->where('gender', 'Male')->count();
+        $females = \App\Models\FamilyGathering::where('year', $current_year)->where('gender', 'Female')->count();
 
 
         return view('livewire.admin.family-gathering', compact('familiesByYear', 'males', 'females'));
