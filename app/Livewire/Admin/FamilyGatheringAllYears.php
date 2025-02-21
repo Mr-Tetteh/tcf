@@ -11,7 +11,7 @@ class FamilyGatheringAllYears extends Component
 
     public function render()
     {
-        $familiesByYear = \App\Models\FamilyGathering::get();
+        $familiesByYear = \App\Models\FamilyGathering::latest()->paginate(13);
         return view('livewire.admin.family-gathering-all-years', compact('familiesByYear'));
     }
 }

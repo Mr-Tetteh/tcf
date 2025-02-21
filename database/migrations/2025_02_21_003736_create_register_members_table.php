@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('registermemmbers', function (Blueprint $table) {
+        Schema::create('register_members', function (Blueprint $table) {
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('other_names');
+            $table->string('other_names')->nullable();
             $table->string('gender');
             $table->string('residence');
-            $table->string('contact');
-            $table->string('church');
-            $table->integer('age');
+            $table->string('age')->nullable();
             $table->date('date_of_birth');
             $table->string('age_category');
+            $table->integer('contact');
+            $table->string('church');
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('registermemmbers');
+        Schema::dropIfExists('register_members');
     }
 };
