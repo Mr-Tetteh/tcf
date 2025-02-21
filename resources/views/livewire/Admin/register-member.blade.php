@@ -4,15 +4,51 @@
     <section class="py-8 px-4">
         <div class="container mx-auto">
             <div class="flex flex-col lg:flex-row gap-8">
-                <button wire:click="toggleModalOn"
-                        class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-                    </svg>
-                    Add Member
-                </button>
 
-                @if($modal)
+                <div class="mb-8 bg-white p-6 rounded-xl shadow-sm w-1/2 lg:ml-52">
+                    <button wire:click="toggleModalOn"
+                            class="w-full bg-blue-400 text-gray-700 py-3 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors duration-200 font-medium text-lg flex items-center justify-center gap-2"
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                        Add Member
+                    </button>
+
+
+                    <button
+                        type="button"
+                        wire:click="export"
+                        class="w-full bg-gray-100 text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors duration-200 font-medium text-lg flex items-center justify-center gap-2"
+                    >
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                        </svg>
+                        Download Excel Template
+                    </button>
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4">Import Records</h2>
+                    <form wire:submit="import" class="space-y-4">
+                        @csrf
+                        <div class="flex items-center gap-4">
+                            <div class="flex-1">
+                                <label
+                                    class="flex items-center justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-lg appearance-none cursor-pointer hover:border-blue-500 focus:outline-none">
+                                    <input type="file" wire:model="csv" class="">
+                                </label>
+                                <div class="text-red-400 text-sm mt-2">
+                                    @error('csv') {{$message}} @enderror
+                                </div>
+                            </div>
+                            <button type="submit"
+                                    class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                                Upload
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            @if($modal)
                     <div class="relative z-50" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                         <!-- Backdrop -->
                         <div class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity"></div>
@@ -293,7 +329,6 @@
 
 
 @endif
-
 </div>
 <div class="bg-white rounded-xl shadow-sm p-6">
     <div class="text-xl font-semibold text-gray-800 mb-6">Registered Members</div>
@@ -320,7 +355,7 @@
                         <div class="flex items-center">
                             <div
                                 class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 font-semibold">
-                                {{$member->first_name[0]}}{{$member->other_names[0]}}{{$member->last_name[0]}}
+                                {{$member->first_name[0]}}{{$member->other_names[0] ?? ''}}{{$member->last_name[0]}}
 
                             </div>
                             <div class="ml-4">

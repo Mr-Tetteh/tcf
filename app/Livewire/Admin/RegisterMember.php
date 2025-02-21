@@ -2,12 +2,19 @@
 
 namespace App\Livewire\Admin;
 
+use App\Imports\RegisterMemberImport;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use Livewire\WithFileUploads;
+use Maatwebsite\Excel\Excel;
 
 class RegisterMember extends Component
 {
+    use WithFileUploads;
+
     #[Layout('layout.admin.partials.website-base-admin')]
+
     public $first_name;
     public $last_name;
     public $other_names;
@@ -21,6 +28,7 @@ class RegisterMember extends Component
     public $memmber_id;
     public $isEdit = false;
     public $modal = false;
+    public $csv;
 
 
     public function restForm()
@@ -52,6 +60,26 @@ class RegisterMember extends Component
         'age_category' => 'required',
     ];
 
+    public function import()
+    {
+        $this->validate([
+            'csv' => 'required|file|mimes:csv,xls,xlsx',
+        ]);
+
+        $extension = $this->csv->getClientOriginalExtension();
+        $filePath = $this->csv->store('temp');
+        $filePath = Storage::path($filePath);
+
+        \Maatwebsite\Excel\Facades\Excel::import(new RegisterMemberImport, $filePath);
+        return redirect()->back();
+    }
+
+    public function export()
+    {
+        return response()->download(public_path('downloads/TCF Register Members.xlsx'));
+
+    }
+
     public function toggleModalOn ()
     {
         $this->modal= true;
@@ -61,6 +89,7 @@ class RegisterMember extends Component
     public function closeModal()
     {
         $this->modal = false;
+        $this->restForm();
 
     }
     public function edit($id)
@@ -122,7 +151,7 @@ class RegisterMember extends Component
             'age' => $this->age,
             'church' => $this->church,
             'date_of_birth' => $this->date_of_birth,
-            'gender' => $this->gender,
+            'gender' => ucfirst(strtolower($this->gender)) ,
             'age_category' => $this->age_category,
         ]);
         $this->restForm();
