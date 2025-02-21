@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Admin;
 
-use App\Models\registermemmber;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -21,6 +20,7 @@ class RegisterMember extends Component
     public $age_category;
     public $memmber_id;
     public $isEdit = false;
+    public $modal = false;
 
 
     public function restForm()
@@ -52,9 +52,20 @@ class RegisterMember extends Component
         'age_category' => 'required',
     ];
 
+    public function toggleModalOn ()
+    {
+        $this->modal= true;
+
+    }
+
+    public function closeModal()
+    {
+        $this->modal = false;
+
+    }
     public function edit($id)
     {
-        $member = registermemmber::find($id);
+        $member = \App\Models\RegisterMember::find($id);
         $this->memmber_id = $member->id;
         $this->first_name = $member->first_name;
         $this->last_name = $member->last_name;
@@ -67,12 +78,13 @@ class RegisterMember extends Component
         $this->gender = $member->gender;
         $this->age_category = $member->age_category;
         $this->isEdit = true;
+        $this->modal = true;
     }
 
     public function update()
     {
         $this->validate();
-        $member = registermemmber::findOrFail($this->memmber_id);
+        $member = \App\Models\RegisterMember::findOrFail($this->memmber_id);
         $member->update([
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
@@ -88,11 +100,12 @@ class RegisterMember extends Component
         $this->isEdit = false;
         $this->restForm();
         session()->flash('message', 'Member updated successfully.');
+        $this->closeModal();
     }
 
     public function delete($id)
     {
-        registermemmber::findOrFail($id)->delete();
+        \App\Models\RegisterMember::findOrFail($id)->delete();
         session()->flash('message', 'Member deleted successfully.');
 
     }
@@ -100,7 +113,7 @@ class RegisterMember extends Component
     public function create()
     {
         $this->validate();
-        registermemmber::create([
+        \App\Models\RegisterMember::create([
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'other_names' => $this->other_names,
@@ -114,13 +127,17 @@ class RegisterMember extends Component
         ]);
         $this->restForm();
         session()->flash('message', 'Member added successfully.');
+        $this->modal = false;
 
     }
+    public $search = '';
+
+
 
     public function render()
     {
 
-        $members = registermemmber::all();
+        $members = \App\Models\RegisterMember::latest()->paginate(10);
         return view('livewire.admin.register-member', compact('members'));
     }
 }
