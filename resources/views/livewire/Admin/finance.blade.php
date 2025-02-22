@@ -118,7 +118,7 @@
                                         <td class="px-6 py-4 text-gray-500">
                                             <div class="flex items-center">
                                                 <div class="ml-4">
-                                                    <div class="font-medium text-gray-900">{{$data->amount}}</div>
+                                                    <div class="font-medium text-gray-900">GHC {{$data->amount}}</div>
                                                 </div>
                                             </div>
                                         </td>
