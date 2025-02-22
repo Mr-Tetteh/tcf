@@ -228,7 +228,8 @@
                                     @if($user->profile_picture)
                                         <img
                                             class=" transform transition-transform duration-700 group-hover:scale-110 rounded-full motion-preset-shake motion-duration-1000"
-                                            src="{{asset($user->profile_picture)}}"
+                                            src="{{ Storage::url($user->profile_picture) }}"
+
                                             alt="Family Gathering event"
                                             width="50%"
                                         />
