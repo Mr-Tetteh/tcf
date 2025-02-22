@@ -37,12 +37,14 @@ class RegisteredUserController extends Controller
             'gender' => ['required', 'in:male,female'],
             'date_of_birth' => ['required', 'date', 'before:today'],
             'role' => ['required', 'string', 'max:255'],
-            'profile_picture' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'profile_picture' => ['nullable', 'file', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:2048'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-
-
+        $filePath = null;
+        if ($request->hasFile('profile_picture')) {
+            $filePath = $request->file('profile_picture')->store('profile_pictures', 'public');
+        }
         $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
@@ -50,12 +52,13 @@ class RegisteredUserController extends Controller
             'gender' => $request->gender,
             'date_of_birth' => $request->date_of_birth,
             'role' => $request->role,
-            'profile_picture' => $request->profile_picture,
+            'profile_picture' => $filePath,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
         event(new Registered($user));
+
 
         return redirect('login');
     }
