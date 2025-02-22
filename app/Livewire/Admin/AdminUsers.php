@@ -9,7 +9,6 @@ use Livewire\Component;
 class AdminUsers extends Component
 {
     #[Layout('layout.admin.partials.website-base-admin')]
-
     public $first_name;
     public $last_name;
     public $email;
@@ -17,8 +16,24 @@ class AdminUsers extends Component
     public $role;
     public $user_id;
     public $isEdit = false;
+    public $modal = false;
 
 
+    public function toggleModal()
+    {
+        $this->modal = true;
+    }
+
+    public function closeModal()
+    {
+        $this->modal = false;
+    }
+
+    public function executeFunctions($id)
+    {
+        $this->edit($id);
+        $this->toggleModal();
+    }
     public function resetForm()
     {
         $this->first_name = '';
@@ -38,6 +53,7 @@ class AdminUsers extends Component
         'role' => 'required',
 
     ];
+
     public function edit($id)
     {
         $user = User::findOrFail($id);
@@ -58,6 +74,7 @@ class AdminUsers extends Component
 
 
     }
+
     public function update()
     {
         $this->validate();
@@ -67,12 +84,12 @@ class AdminUsers extends Component
         ]);
 
         $this->resetForm();
-        $this->isEdit = false;
+        $this->modal=false;
     }
 
     public function render()
     {
-        $users =  User::all();
+        $users = User::all();
         return view('livewire.admin.admin-users', compact('users'));
     }
 }

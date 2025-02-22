@@ -27,153 +27,6 @@
                             {{ session('message') }}
                         </div>
                     @endif
-                    @if($isEdit)
-                    <form
-                        class="bg-white shadow-2xl rounded-2xl overflow-hidden max-w-xl mx-auto transform transition-all duration-300 hover:scale-[1.01]"
-                        wire:submit="update">
-                        <!-- Gradient Header with Subtle Animation -->
-                        <div
-                            class="bg-gradient-to-r from-blue-600 to-blue-800 p-6 relative overflow-hidden">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800 opacity-50 animate-pulse"></div>
-                            <h2 class="text-3xl font-bold text-white text-center relative z-10 tracking-wide">
-                                Update User Role
-                            </h2>
-                        </div>
-
-                        <!-- Form Content with Enhanced Spacing and Design -->
-                        <div class="p-8 space-y-6">
-                            <!-- First Name Field -->
-                            <div class="group">
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2 group-focus-within:text-blue-600 transition-colors">
-                                    First Name <span class="text-red-500">*</span>
-                                </label>
-                                <input wire:model="first_name"
-                                       type="text"
-                                       class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all
-                          hover:shadow-md group-focus-within:shadow-lg"
-                                       disabled
-                                >
-                                @error('first_name')
-                                <div class="text-red-600 mt-1 text-sm animate-bounce">
-                                    {{$message}}
-                                </div>
-                                @enderror
-                            </div>
-
-                            <!-- Phone Number Field -->
-                            <div class="group">
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2 group-focus-within:text-blue-600 transition-colors">
-                                    Last Name <span class="text-red-500">*</span>
-                                </label>
-                                <input wire:model="last_name"
-                                       type="text"
-                                       class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all
-                          hover:shadow-md group-focus-within:shadow-lg"
-                                       disabled
-                                >
-                                @error('last_name')
-                                <div class="text-red-600 mt-1 text-sm animate-bounce">
-                                    {{$message}}
-                                </div>
-                                @enderror
-                            </div>
-
-                            <!-- Email Field -->
-                            <div class="group">
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2 group-focus-within:text-blue-600 transition-colors">
-                                    Email
-                                </label>
-                                <input
-                                    wire:model="email"
-                                    type="email"
-                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all
-                       hover:shadow-md group-focus-within:shadow-lg"
-                                    disabled
-                                >
-                                @error('email')
-                                <div class="text-red-600 mt-1 text-sm animate-bounce">
-                                    {{$message}}
-                                </div>
-                                @enderror
-                            </div>
-
-                            <!-- Contact Field -->
-                            <div class="group">
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2 group-focus-within:text-blue-600 transition-colors">
-                                    Contact
-                                </label>
-                                <input
-                                    wire:model="contact"
-                                    type="number"
-                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all
-                       hover:shadow-md group-focus-within:shadow-lg"
-                                    disabled
-                                >
-                                @error('contact')
-                                <div class="text-red-600 mt-1 text-sm animate-bounce">
-                                    {{$message}}
-                                </div>
-                                @enderror
-                            </div>
-
-                            <!-- Role Selection with Enhanced Styling -->
-                            <div class="group">
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2 group-focus-within:text-blue-600 transition-colors">
-                                    Role
-                                </label>
-                                <div class="relative">
-                                    <select
-                                        wire:model="role"
-                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all
-                           appearance-none bg-white hover:shadow-md group-focus-within:shadow-lg
-                           pr-10 cursor-pointer"
-                                    >
-                                        <option value="" disabled>Select a Role</option>
-                                        <option value="admin" class="hover:bg-blue-50">Admin</option>
-                                        <option value="finance" class="hover:bg-blue-50">Finance</option>
-                                    </select>
-                                    <div
-                                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                             viewBox="0 0 20 20">
-                                            <path
-                                                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                @error('role')
-                                <div class="text-red-600 mt-1 text-sm animate-bounce">
-                                    {{$message}}
-                                </div>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <!-- Submit Button with Hover and Transition Effects -->
-                        <div class="p-6">
-                            <button
-                                type="submit"
-                                class="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300
-                   transform hover:-translate-y-1 active:translate-y-0 shadow-lg hover:shadow-xl
-                   focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-                            >
-            <span class="flex items-center justify-center space-x-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                     stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                </svg>
-                <span>Update Role</span>
-            </span>
-                            </button>
-                        </div>
-                    </form>
-                    @endif
                     <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                         <h2 class="text-xl font-semibold text-gray-800">Users List</h2>
                         <div class="relative">
@@ -192,6 +45,133 @@
                         </div>
                     </div>
                 </div>
+                @if($modal)
+                    <div class="relative z-10 modal" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                        <!-- Backdrop -->
+                        <div class="fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity"></div>
+
+                        <!-- Modal Container -->
+                        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+                            <div class="flex min-h-full items-center justify-center p-4">
+                                <div class="relative w-full max-w-2xl mx-auto">
+                                    <!-- Modal Content -->
+                                    <div class="relative bg-white rounded-xl shadow-2xl transform transition-all duration-300 hover:shadow-3xl">
+                                        <!-- Single Header (removed duplicate headers) -->
+                                        <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-6 rounded-t-xl relative overflow-hidden">
+                                            <div class="absolute inset-0 bg-black/10"></div>
+                                            <h2 class="text-2xl font-bold text-white relative z-10">Update User Role</h2>
+                                        </div>
+
+                                        <!-- Form Content -->
+                                        <div class="p-6">
+                                            <form wire:submit="update" class="space-y-5">
+                                                <!-- Form Fields Grid -->
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                                    <!-- First Name -->
+                                                    <div class="space-y-2">
+                                                        <label class="text-sm font-medium text-gray-700">
+                                                            First Name <span class="text-red-500">*</span>
+                                                        </label>
+                                                        <input
+                                                            wire:model="first_name"
+                                                            type="text"
+                                                            class="w-full px-4 py-2.5 rounded-lg border border-gray-300 bg-gray-50 text-gray-500 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
+                                                            disabled
+                                                        >
+                                                        @error('first_name')
+                                                        <p class="text-red-500 text-sm">{{$message}}</p>
+                                                        @enderror
+                                                    </div>
+
+                                                    <!-- Last Name -->
+                                                    <div class="space-y-2">
+                                                        <label class="text-sm font-medium text-gray-700">
+                                                            Last Name <span class="text-red-500">*</span>
+                                                        </label>
+                                                        <input
+                                                            wire:model="last_name"
+                                                            type="text"
+                                                            class="w-full px-4 py-2.5 rounded-lg border border-gray-300 bg-gray-50 text-gray-500 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
+                                                            disabled
+                                                        >
+                                                        @error('last_name')
+                                                        <p class="text-red-500 text-sm">{{$message}}</p>
+                                                        @enderror
+                                                    </div>
+
+                                                    <!-- Email -->
+                                                    <div class="space-y-2">
+                                                        <label class="text-sm font-medium text-gray-700">Email</label>
+                                                        <input
+                                                            wire:model="email"
+                                                            type="email"
+                                                            class="w-full px-4 py-2.5 rounded-lg border border-gray-300 bg-gray-50 text-gray-500 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
+                                                            disabled
+                                                        >
+                                                        @error('email')
+                                                        <p class="text-red-500 text-sm">{{$message}}</p>
+                                                        @enderror
+                                                    </div>
+
+                                                    <!-- Contact -->
+                                                    <div class="space-y-2">
+                                                        <label class="text-sm font-medium text-gray-700">Contact</label>
+                                                        <input
+                                                            wire:model="contact"
+                                                            type="number"
+                                                            class="w-full px-4 py-2.5 rounded-lg border border-gray-300 bg-gray-50 text-gray-500 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
+                                                            disabled
+                                                        >
+                                                        @error('contact')
+                                                        <p class="text-red-500 text-sm">{{$message}}</p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <!-- Role Selection (Full Width) -->
+                                                <div class="space-y-2">
+                                                    <label class="text-sm font-medium text-gray-700">Role</label>
+                                                    <div class="relative">
+                                                        <select
+                                                            wire:model="role"
+                                                            class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all appearance-none bg-white pr-10"
+                                                        >
+                                                            <option value="" disabled>Select a Role</option>
+                                                            <option value="admin">Admin</option>
+                                                            <option value="finance">Finance</option>
+                                                        </select>
+                                                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    @error('role')
+                                                    <p class="text-red-500 text-sm">{{$message}}</p>
+                                                    @enderror
+                                                </div>
+
+                                                <!-- Action Buttons -->
+                                                <div class="flex items-center justify-end space-x-4 pt-4">
+                                                    <button type="button" wire:click="closeModal"
+                                                            class="px-6 py-2.5 text-sm font-medium text-gray-700 hover:text-gray-800 transition-colors duration-200">
+                                                        Cancel
+                                                    </button>
+                                                    <button
+                                                        type="submit"
+                                                        class="px-6 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200"
+                                                    >
+                                                        Update Role
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
 
                 <!-- Table -->
                 <div class="overflow-x-auto">
@@ -265,7 +245,7 @@
                                 <td class="px-6 py-4">
                                     <div class="flex space-x-3">
                                         <button
-                                            wire:click="edit({{$user->id}})"
+                                            wire:click="executeFunctions({{$user->id}})"
                                             class="inline-flex items-center px-3 py-1.5 bg-amber-100 text-amber-700 rounded-lg hover:bg-amber-200 transition-colors duration-200">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" fill="none"
                                                  viewBox="0 0 24 24" stroke="currentColor">
