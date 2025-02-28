@@ -227,7 +227,7 @@
                                 <span class="text-gray-500 text-sm truncate block max-w-xs">
                                     @if($user->profile_picture)
                                         <img
-                                            class=" transform transition-transform duration-700 group-hover:scale-110 rounded-full motion-preset-shake motion-duration-1000"
+                                            class="size-24 rounded-full"
                                             src="{{ Storage::url($user->profile_picture) }}"
 
                                             alt="Family Gathering event"
