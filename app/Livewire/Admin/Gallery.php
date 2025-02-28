@@ -48,6 +48,12 @@ class Gallery extends Component
 
     }
 
+    public function delete($id)
+    {
+        \App\Models\Gallery::findOrFail($id)->delete();
+
+    }
+
     public function render()
     {
         $galleries = GalleryModel::all();
