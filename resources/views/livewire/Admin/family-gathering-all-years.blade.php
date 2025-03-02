@@ -24,6 +24,8 @@
                             <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">Contact</th>
                             <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">Gender</th>
                             <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">Church</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">Year</th>
+
                         </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
@@ -47,6 +49,9 @@
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="text-sm text-gray-600">{{ $family->church }}</div>
                                 </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-600">{{ $family->year }}</div>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -56,5 +61,4 @@
             </div>
         </div>
     </div>
-    </body>
 </div>
