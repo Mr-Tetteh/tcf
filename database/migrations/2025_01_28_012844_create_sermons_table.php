@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('slug');
             $table->string('preacher');
             $table->string('date');
-            $table->string('sermon');
+            $table->longText('sermon')->nullable();
+            $table->longText('sermon_file')->nullable();
             $table->timestamps();
         });
     }
