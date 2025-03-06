@@ -19,18 +19,29 @@
                     <table class="w-full bg-white">
                         <thead class="bg-gray-50 sticky top-0">
                         <tr>
-                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">Full Name</th>
-                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">Residence</th>
-                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">Contact</th>
-                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">Gender</th>
-                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">Church</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">
+                                Full Name
+                            </th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">
+                                Residence
+                            </th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">
+                                Contact
+                            </th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">
+                                Gender
+                            </th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">
+                                Church
+                            </th>
                         </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
                         @foreach($familiesByYear as $family)
                             <tr class="hover:bg-gray-50 transition-all duration-200">
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm font-medium text-gray-900">{{ $family->first_name }} {{ $family->other_names }} {{ $family->last_name }}</div>
+                                    <div
+                                        class="text-sm font-medium text-gray-900">{{ $family->first_name }} {{ $family->other_names }} {{ $family->last_name }}</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="text-sm text-gray-600">{{ $family->residence }}</div>
@@ -52,9 +63,10 @@
                         </tbody>
                         {{$familiesByYear->links()}}
                     </table>
+
                 </div>
             </div>
         </div>
     </div>
-    </body>
+
 </div>
