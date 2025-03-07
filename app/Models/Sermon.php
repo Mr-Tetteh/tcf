@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class Sermon extends Model
 {
     use Sluggable;
-    protected $fillable = ['title', 'preacher', 'slug', 'date', 'sermon'];
+    protected $fillable = ['title', 'preacher', 'slug', 'date', 'sermon', 'sermon_file'];
 
 
     public function sluggable(): array
