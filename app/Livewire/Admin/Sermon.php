@@ -16,6 +16,7 @@ class Sermon extends Component
     public $preacher;
     public $sermon;
     public $date;
+    public $sermon_file;
     public $isEdit = false;
 
     public function resetForm()
@@ -25,6 +26,7 @@ class Sermon extends Component
         $this->preacher = null;
         $this->sermon = null;
         $this->date = null;
+        $this->sermon_file = null;
     }
 
     protected $rules = [
