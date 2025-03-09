@@ -60,10 +60,22 @@
                                 <!-- Audio Player -->
                                 <div class="bg-gray-50 rounded-xl p-4">
                                     <div class="flex items-center gap-4">
-                                        <audio controls>
-                                            <source src="{{ Storage::url($data->sermon) }}" type="audio/mpeg">
+                                        @if($data->sermon)
+                                            <audio controls>
+                                                <source src="{{ Storage::url($data->sermon) }}" type="audio/mpeg">
 
-                                        </audio>
+                                            </audio>
+                                        @else
+                                            <iframe src="{{ Storage::url($data->sermon_file) }}"></iframe>
+
+                                            <a href="{{Storage::url($data->sermon_file) }}"  class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                                </svg>
+                                                Download Sermon File
+                                            </a>
+
+                                        @endif
                                     </div>
                                 </div>
                             </div>

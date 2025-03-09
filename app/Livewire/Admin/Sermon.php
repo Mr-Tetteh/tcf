@@ -32,7 +32,8 @@ class Sermon extends Component
     protected $rules = [
         'title' => 'required',
         'preacher' => 'required',
-        'sermon' => 'required|file|mimes:mp3,wav,ogg|max:921600',
+        'sermon' => 'nullable|file|mimes:mp3,wav,ogg|max:921600',
+        'sermon_file' => 'nullable|file|mimes:pdf,doc|max:921600',
         'date' => 'required',
 
     ];
@@ -50,15 +51,25 @@ class Sermon extends Component
 
     public function create()
     {
-
         $this->validate();
 
         try {
-            $sermonPath = $this->sermon->store('sermon', 'public');
+            $sermonPath = null;
+            $sermonFilePath = null;
+
+            if ($this->sermon) {
+                $sermonPath = $this->sermon->store('sermon', 'public');
+            }
+
+            if ($this->sermon_file) {
+                $sermonFilePath = $this->sermon_file->store('sermon', 'public');
+            }
+
             \App\Models\Sermon::create([
                 'title' => $this->title,
                 'preacher' => $this->preacher,
                 'sermon' => $sermonPath,
+                'sermon_file' => $sermonFilePath,
                 'date' => $this->date,
             ]);
             $this->resetForm();
@@ -66,8 +77,15 @@ class Sermon extends Component
         } catch (\Exception $e) {
             session()->flash('error', 'Upload failed: ' . $e->getMessage());
         }
+
     }
 
+    public function delete($id)
+    {
+        \App\Models\Sermon::findOrFail($id)->delete();
+
+
+    }
 
     public function render()
     {
