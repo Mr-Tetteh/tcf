@@ -74,7 +74,7 @@
                                                 </svg>
                                                 Download Sermon File
                                             </a>
-
+{{--file--}}
                                         @endif
                                     </div>
                                 </div>
