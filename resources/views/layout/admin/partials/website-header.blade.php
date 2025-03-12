@@ -19,13 +19,12 @@
         <div class="flex flex-col items-center mb-6 space-y-3">
                 @if(Auth::user()->profile_picture)
                     <img src="{{Storage::url(Auth::user()->profile_picture)}}" alt="profile_picture"
-                         class="size-32 rounded-full">
+                         class="size-12 rounded-2xl">
                 @else
                     <img
-                        class="size-24 rounded-full"
+                        class="size-14 rounded-2xl"
                         src="../../../images/user-icon-on-transparent-background-free-png.webp"
                         alt="profile Picture"
-                        width="20%"
                     />
         </div>
         @endif
