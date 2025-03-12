@@ -47,6 +47,13 @@
                         </a>
                     </li>
                     <li class="relative group">
+                        <a href="{{route('study_materials')}}" class="flex items-center px-4 py-2 text-sm font-medium text-gray-700 rounded-lg group-hover:text-blue-600 group-hover:bg-blue-50 transition-all duration-200">
+                            Study Material
+                            <span class="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-blue-500/0 via-blue-500/70 to-blue-500/0 opacity-0 transition-opacity duration-200 group-hover:opacity-100"></span>
+                        </a>
+                    </li>
+
+                    <li class="relative group">
                         <a href="{{route('gallery')}}" class="flex items-center px-4 py-2 text-sm font-medium text-gray-700 rounded-lg group-hover:text-blue-600 group-hover:bg-blue-50 transition-all duration-200">
                             Gallery
                             <span class="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-blue-500/0 via-blue-500/70 to-blue-500/0 opacity-0 transition-opacity duration-200 group-hover:opacity-100"></span>
