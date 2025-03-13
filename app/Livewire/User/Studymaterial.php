@@ -11,6 +11,7 @@ class Studymaterial extends Component
 
     public function render()
     {
-        return view('livewire.user.studymaterial');
+        $datas = \App\Models\StudyMaterial::latest()->paginate(6);
+        return view('livewire.user.studymaterial', compact('datas'));
     }
 }
