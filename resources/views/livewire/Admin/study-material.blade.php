@@ -105,7 +105,8 @@
 
 
                                         <td class="px-6 py-4 text-gray-500">
-                                            <iframe src="{{Storage::url($data->study_matrial) }}"></iframe>
+                                            <iframe src="{{ Storage::url($data->study_material) }}"></iframe>
+
 
                                         </td>
 
@@ -125,7 +126,7 @@
                                                               stroke-width="2"
                                                               d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                                     </svg>
-                                                    Edit Member
+                                                    Edit
                                                 </button>
                                                 <button
                                                     wire:click="delete({{$data->id}})"
