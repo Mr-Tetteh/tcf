@@ -39,7 +39,7 @@
                         </div>
                         <div class="ml-4">
                             <h3 class="text-sm font-medium text-gray-500">Total Users</h3>
-                            <p class="text-2xl font-bold text-blue-500">32</p>
+                            <p class="text-2xl font-bold text-blue-500">{{$users}}</p>
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                         </div>
                         <div class="ml-4">
                             <h3 class="text-sm font-medium text-gray-500">Total Members</h3>
-                            <p class="text-2xl font-bold text-purple-500">42</p>
+                            <p class="text-2xl font-bold text-purple-500">{{$members}}</p>
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                         </div>
                         <div class="ml-4">
                             <h3 class="text-sm font-medium text-gray-500">Total Male Members</h3>
-                            <p class="text-2xl font-bold text-green-500">567</p>
+                            <p class="text-2xl font-bold text-green-500">{{$males}}</p>
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                         </div>
                         <div class="ml-4">
                             <h3 class="text-sm font-medium text-gray-500">Total Female Members</h3>
-                            <p class="text-2xl font-bold text-yellow-500">45,00</p>
+                            <p class="text-2xl font-bold text-yellow-500">{{$females}}</p>
                         </div>
                     </div>
                 </div>
@@ -91,7 +91,7 @@
                         </div>
                         <div class="ml-4">
                             <h3 class="text-sm font-medium text-gray-500">Total Number of  Youth</h3>
-                            <p class="text-2xl font-bold text-fuchsia-500">45,00</p>
+                            <p class="text-2xl font-bold text-fuchsia-500">{{$youth}}</p>
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
                         </div>
                         <div class="ml-4">
                             <h3 class="text-sm font-medium text-gray-500">Total Number of Children </h3>
-                            <p class="text-2xl font-bold text-red-500">424</p>
+                            <p class="text-2xl font-bold text-red-500">{{$children}}</p>
                         </div>
                     </div>
                 </div>
