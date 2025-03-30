@@ -68,6 +68,7 @@
                                     id="firstName"
                                     name="firstName"
                                     placeholder="Enter first name"
+                                    autocomplete="Danielo"
                                     class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors duration-200"
                                 >
                                 <div class="text-red-400 text-sm">

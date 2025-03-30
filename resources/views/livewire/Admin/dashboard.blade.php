@@ -90,7 +90,7 @@
                             <i class="fas fa-female text-xl text-fuchsia-500"></i>
                         </div>
                         <div class="ml-4">
-                            <h3 class="text-sm font-medium text-gray-500">Total Number of  Youth</h3>
+                            <h3 class="text-sm font-medium text-gray-500">Total Number of Youth</h3>
                             <p class="text-2xl font-bold text-fuchsia-500">{{$youth}}</p>
                         </div>
                     </div>
