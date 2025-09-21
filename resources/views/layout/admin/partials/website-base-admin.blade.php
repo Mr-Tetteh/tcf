@@ -25,7 +25,8 @@
             @apply fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full md:translate-x-0;
         }
     </style>
-    @vite(['resources/css/app.css', 'resources/css/styles.css', 'resources/js/script.js'])
+    @vite(['resources/css/app.css', 'resources/css/styles.css', 'resources/js/script.js', 'resources/js/script.js'])
+
 
 
     @livewireStyles

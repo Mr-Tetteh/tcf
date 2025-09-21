@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use Illuminate\Support\Facades\Request;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -18,6 +19,7 @@ class Sermon extends Component
     public $date;
     public $sermon_file;
     public $isEdit = false;
+    public $sermonId;
 
     public function resetForm()
     {
@@ -37,17 +39,6 @@ class Sermon extends Component
         'date' => 'required',
 
     ];
-
-    public function edit($id)
-    {
-        $sermon = \App\Models\Sermon::findOrFail($id);
-
-        $this->sermon = $sermon;
-        $this->title = $sermon->title;
-        $this->preacher = $sermon->preacher;
-        $this->date = $sermon->date;
-        $this->isEdit = true;
-    }
 
     public function create()
     {
@@ -79,6 +70,46 @@ class Sermon extends Component
         }
 
     }
+
+    public function edit($id)
+    {
+        $sermon = \App\Models\Sermon::findOrFail($id);
+
+        $this->sermonId = $sermon->id;
+        $this->sermon = $sermon;
+        $this->title = $sermon->title;
+        $this->preacher = $sermon->preacher;
+        $this->date = $sermon->date;
+        $this->isEdit = true;
+    }
+
+public function update()
+{
+    $sermon = \App\Models\Sermon::findOrFail($this->sermonId);
+
+    $sermonPath = $sermon->sermon;
+    $sermonFilePath = $sermon->sermon_file;
+
+    if ($this->sermon instanceof \Illuminate\Http\UploadedFile) {
+        $sermonPath = $this->sermon->store('sermon', 'public');
+    }
+
+    if ($this->sermon_file instanceof \Illuminate\Http\UploadedFile) {
+        $sermonFilePath = $this->sermon_file->store('sermon', 'public');
+    }
+
+    $sermon->update([
+        'title' => $this->title,
+        'preacher' => $this->preacher,
+        'sermon' => $sermonPath,
+        'sermon_file' => $sermonFilePath,
+        'date' => $this->date,
+    ]);
+    $this->resetForm();
+    $this->isEdit = false;
+    session()->flash('message', 'Sermon updated successfully.');
+}
+
 
     public function delete($id)
     {
