@@ -11,7 +11,7 @@
                             {{ session('message') }}
                         </div>
                     @endif
-                    <form class="max-w-3xl mx-auto" wire:submit.prevent="create" enctype="multipart/form-data">
+                    <form class="max-w-3xl mx-auto" wire:submit.prevent="{{$isEdit? "update": "create"}}" enctype="multipart/form-data">
                         <!-- Header -->
                         <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-t-xl p-6">
                             <h2 class="text-2xl font-bold text-white">Upload Sermon</h2>
