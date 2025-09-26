@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\admin;
+namespace App\Livewire\Admin;
 
 
 use App\Imports\FamilyGatheringImport;
@@ -16,7 +16,7 @@ class FamilyGathering extends Component
 {
     use WithFileUploads;
 
-    #[Layout('layout.Admin.partials.website-base-admin')]
+    #[Layout('layout.admin.partials.website-base-admin')]
     public $first_name;
     public $last_name;
     public $other_names;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\admin;
+namespace App\Livewire\Admin;
 
 use Illuminate\Support\Facades\Request;
 use Livewire\Attributes\Layout;
