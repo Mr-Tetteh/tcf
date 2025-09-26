@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\admin;
 
 use App\Models\User;
 use Livewire\Attributes\Layout;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\admin;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
