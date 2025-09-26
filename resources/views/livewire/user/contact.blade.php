@@ -147,7 +147,7 @@
                                     <!-- Phone Field -->
                                     <div class="group">
                                         <label for="phone" class="block text-sm font-semibold text-gray-800 mb-1.5">
-                                            Phone Number <span class="text-gray-500 font-normal">(Optional)</span>
+                                            Phone Number
                                         </label>
                                         <div class="relative">
                                             <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-gray-400">
