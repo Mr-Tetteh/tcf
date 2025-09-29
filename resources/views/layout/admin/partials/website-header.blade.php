@@ -330,46 +330,83 @@
             </li>
 
             <!-- Financial Management -->
-            <li class="menu-item">
+            <li class="menu-item relative z-20">
                 <button
-                    class="flex items-center w-full p-3 text-gray-700 rounded-xl dark:text-gray-200 hover:bg-gradient-to-r hover:from-yellow-500 hover:to-amber-600 hover:text-white dark:hover:from-yellow-600 dark:hover:to-amber-700 group transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg border border-transparent hover:border-yellow-200 dark:hover:border-yellow-800">
+                    type="button"
+                    class="flex items-center w-full p-3 text-gray-700 rounded-xl dark:text-gray-200
+               hover:bg-gradient-to-r hover:from-yellow-500 hover:to-amber-600 hover:text-white
+               dark:hover:from-yellow-600 dark:hover:to-amber-700 group transition-all
+               duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg
+               border border-transparent hover:border-yellow-200 dark:hover:border-yellow-800"
+                    onclick="this.nextElementSibling.classList.toggle('hidden');
+                 this.querySelector('.menu-arrow').classList.toggle('rotate-90')"
+                    aria-expanded="false"
+                    aria-controls="financial-submenu"
+                >
                     <div
-                        class="p-2 bg-yellow-100 dark:bg-yellow-900 rounded-lg group-hover:bg-white/20 transition-colors duration-300">
+                        class="p-2 bg-yellow-100 dark:bg-yellow-900 rounded-lg
+                   group-hover:bg-white/20 transition-colors duration-300">
                         <svg
                             class="w-5 h-5 text-yellow-600 dark:text-yellow-400 group-hover:text-white transition duration-300"
-                            fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            fill="currentColor" viewBox="0 0 24 24">
                             <path
-                                d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.07 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                                d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85
+                       1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5
+                       1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3
+                       2.41 0 .69-.49 1.79-2.7 1.79-2.07 0-2.87-.92-2.98-2.1h-2.2c.12
+                       2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5
+                       3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
                         </svg>
                     </div>
-                    <span class="flex-1 ms-3 text-left font-medium whitespace-nowrap">Financial Management</span>
-                    <svg class="w-4 h-4 menu-arrow transition-transform duration-200 group-hover:rotate-90"
-                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    <span class="flex-1 ms-3 text-left font-medium whitespace-nowrap">
+            Financial Management
+        </span>
+                    <svg class="w-4 h-4 menu-arrow transition-transform duration-200"
+                         xmlns="http://www.w3.org/2000/svg" fill="none"
                          viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        <path stroke="currentColor" stroke-linecap="round"
+                              stroke-linejoin="round" stroke-width="2"
                               d="m1 1 4 4 4-4"/>
                     </svg>
                 </button>
-                <ul class="submenu py-2 space-y-2 pl-4 mt-2 border-l-2 border-yellow-200 dark:border-yellow-800">
+
+                <ul id="financial-submenu"
+                    class="submenu hidden py-7 space-y-2 pl-4 mt-2 border-l-2 border-yellow-200 dark:border-yellow-800 overflow-y-auto">
+
+                    <!-- Record Financial -->
                     <li>
                         <a href="{{route('admin.finance')}}"
-                           class="flex items-center w-full p-2 text-gray-600 dark:text-gray-300 transition duration-200 rounded-lg pl-8 group hover:bg-yellow-50 dark:hover:bg-yellow-900/20 hover:text-yellow-700 dark:hover:text-yellow-300">
+                           class="flex items-center w-full p-2 text-gray-600 dark:text-gray-300
+                      transition duration-200 rounded-lg pl-8 group
+                      hover:bg-yellow-50 dark:hover:bg-yellow-900/20
+                      hover:text-yellow-700 dark:hover:text-yellow-300">
                             <svg class="w-4 h-4 mr-2 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
-                                      d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414L16 10l-5.293 5.293a1 1 0 01-1.414 0z"
+                                      d="M10.293 15.707a1 1 0 010-1.414L14.586
+                             10l-4.293-4.293a1 1 0 111.414-1.414L16
+                             10l-5.293 5.293a1 1 0 01-1.414 0z"
                                       clip-rule="evenodd"/>
                             </svg>
-                            Record Financial</a>
+                            Record Financial
+                        </a>
                     </li>
+
+                    <!-- Online Transaction -->
                     <li>
                         <a href="{{route('admin.online')}}"
-                           class="flex items-center w-full p-2 text-gray-600 dark:text-gray-300 transition duration-200 rounded-lg pl-8 group hover:bg-yellow-50 dark:hover:bg-yellow-900/20 hover:text-yellow-700 dark:hover:text-yellow-300">
+                           class="flex items-center w-full p-2 text-gray-600 dark:text-gray-300
+                      transition duration-200 rounded-lg pl-8 group
+                      hover:bg-yellow-50 dark:hover:bg-yellow-900/20
+                      hover:text-yellow-700 dark:hover:text-yellow-300">
                             <svg class="w-4 h-4 mr-2 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
-                                      d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414L16 10l-5.293 5.293a1 1 0 01-1.414 0z"
+                                      d="M10.293 15.707a1 1 0 010-1.414L14.586
+                             10l-4.293-4.293a1 1 0 111.414-1.414L16
+                             10l-5.293 5.293a1 1 0 01-1.414 0z"
                                       clip-rule="evenodd"/>
                             </svg>
-                            Online Transaction</a>
+                            Online Transaction
+                        </a>
                     </li>
                 </ul>
             </li>
