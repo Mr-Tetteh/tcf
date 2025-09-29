@@ -1,5 +1,6 @@
-    <div class="p-4 sm:ml-64  min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 motion-preset-expand motion-duration-2000">
-            <!-- Header Section -->
+    <div class="p-10 sm:ml-64  min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 motion-preset-expand motion-duration-2000">
+
+    <!-- Header Section -->
             <header class="mb-8">
                 <div class="flex justify-between items-center">
                     <div>

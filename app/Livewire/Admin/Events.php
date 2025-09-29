@@ -81,8 +81,6 @@ class Events extends Component
 
     public function update()
     {
-        $this->validate();
-
         if ($this->event_image instanceof TemporaryUploadedFile) {
             $filePath = $this->event_image->store('events', 'public');
         } else {

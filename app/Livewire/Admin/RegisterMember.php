@@ -112,7 +112,6 @@ class RegisterMember extends Component
 
     public function update()
     {
-        $this->validate();
         $member = \App\Models\RegisterMember::findOrFail($this->memmber_id);
         $member->update([
             'first_name' => $this->first_name,

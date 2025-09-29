@@ -12,9 +12,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Livewire\Attributes\Layout;
 
 class RegisteredUserController extends Controller
 {
+    #[Layout('layout.admin.partials.website-base-admin')]
+
     /**
      * Display the registration view.
      */
