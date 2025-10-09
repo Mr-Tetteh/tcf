@@ -6,7 +6,7 @@
     </div>
 
     <!-- Stats Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div class="bg-white rounded-lg shadow-sm p-4 border-l-4 border-blue-500">
             <div class="flex items-center justify-between">
                 <div>
@@ -41,17 +41,7 @@
                 </svg>
             </div>
         </div>
-        <div class="bg-white rounded-lg shadow-sm p-4 border-l-4 border-orange-500">
-            <div class="flex items-center justify-between">
-                <div>
-                    <p class="text-sm text-gray-600">Years</p>
-                    <p class="text-2xl font-bold text-gray-800">All years</p>
-                </div>
-                <svg class="w-10 h-10 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                </svg>
-            </div>
-        </div>
+    
     </div>
 
     <!-- Search and Filter Section -->
