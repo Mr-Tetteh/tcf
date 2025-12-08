@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use Carbon\Carbon;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -11,7 +12,8 @@ class FamilyGatheringAllYears extends Component
 
     public function render()
     {
-        $familiesByYear = \App\Models\FamilyGathering::latest()->paginate(13);
+        $familiesByYear = \App\Models\FamilyGathering::whereyear('created_at', operator: Carbon::now()->year)->latest()->paginate(13);
+        
         return view('livewire.admin.family-gathering-all-years', compact('familiesByYear'));
     }
 }

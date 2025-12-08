@@ -52,7 +52,7 @@ class RegisterMember extends Component
         'last_name' => 'required',
         'other_names' => 'required',
         'residence' => 'required',
-        'contact' => 'required|digits:10',
+        'contact' => 'required|numeric|min:10|max:10',
         'church' => 'required',
         'age' => 'required',
         'date_of_birth' => 'required',

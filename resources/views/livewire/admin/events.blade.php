@@ -106,6 +106,7 @@
                                         </label>
                                         <input
                                             type="file"
+                                                accept="image/*"
 
                                             class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-gray-50 hover:bg-white"
                                             placeholder="Enter the title of the record"
@@ -148,7 +149,7 @@
 
                                     <div class="relative">
                                         <label class="text-sm font-medium text-gray-700 block mb-2">
-                                            Events speaker <span class="text-red-500">*</span>
+                                            Main speaker
                                         </label>
                                         <input
                                             type="text"
@@ -167,7 +168,7 @@
 
                                     <div class="relative">
                                         <label class="text-sm font-medium text-gray-700 block mb-2">
-                                            Second Events speaker <span class="text-red-500">*</span>
+                                            Second Events speaker 
                                         </label>
                                         <input
                                             type="text"
@@ -185,7 +186,7 @@
 
                                     <div class="relative">
                                         <label class="text-sm font-medium text-gray-700 block mb-2">
-                                            Third Events speaker <span class="text-red-500">*</span>
+                                            Third Events speaker
                                         </label>
                                         <input
                                             type="text"
@@ -203,7 +204,7 @@
 
                                     <div class="relative">
                                         <label class="text-sm font-medium text-gray-700 block mb-2">
-                                            Fourth Events speaker <span class="text-red-500">*</span>
+                                            Fourth Events speaker 
                                         </label>
                                         <input
                                             type="text"

@@ -126,7 +126,7 @@
                                         <td class="px-6 py-4 text-gray-500">
                                             <div class="flex items-center">
                                                 <div class="ml-4">
-                                                    <div class="font-medium text-gray-900">{{$data->user->first_name}} {{$data->user->last_name}}</div>
+                                                    <div class="font-medium text-gray-900">{{$data->user?->first_name}} {{$data->user?->last_name}}</div>
                                                 </div>
                                             </div>
                                         </td>
