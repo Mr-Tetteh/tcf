@@ -16,7 +16,7 @@ use Livewire\Attributes\Layout;
 
 class RegisteredUserController extends Controller
 {
-    #[Layout('layout.admin.partials.website-base-admin')]
+    // #[Layout('layout.admin.partials.website-base-admin')]
 
     /**
      * Display the registration view.
@@ -62,7 +62,6 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-
-        return redirect('login');
+        return redirect('/admin/admin_users');
     }
 }

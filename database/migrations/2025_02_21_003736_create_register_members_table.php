@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('age')->nullable();
             $table->date('date_of_birth');
             $table->string('age_category');
-            $table->integer('contact');
+            $table->string('contact');
             $table->string('church');
             $table->timestamps();
         });

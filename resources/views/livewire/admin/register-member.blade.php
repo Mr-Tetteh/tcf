@@ -450,7 +450,7 @@
                                     {{$member->residence}}
                                 </span>
                     </td>
-                    <td class="px-6 py-4 text-gray-500">{{$member->contact}}</td>
+                    <td class="px-6 py-4 text-gray-500"><a href="Tel:{{$member->contact}}"> {{$member->contact}}</a></td>
                     <td class="px-6 py-4 text-gray-500">{{$member->gender}}</td>
                     <td class="px-6 py-4">
                                 <span class="font-medium text-gray-900">

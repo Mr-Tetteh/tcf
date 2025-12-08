@@ -82,13 +82,7 @@
                         </svg>
                     </div>
                     <span class="flex-1 ms-3 font-medium whitespace-nowrap">Register User</span>
-                    <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
+                
                 </a>
             </li>
 
@@ -106,13 +100,7 @@
                         </svg>
                     </div>
                     <span class="flex-1 ms-3 font-medium whitespace-nowrap">Users</span>
-                    <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
+    
                 </a>
             </li>
 
@@ -148,13 +136,7 @@
                         </svg>
                     </div>
                     <span class="ms-3 font-medium">Sermon</span>
-                    <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
+                
                 </a>
             </li>
 
@@ -172,13 +154,7 @@
                         </svg>
                     </div>
                     <span class="ms-3 font-medium">Gallery</span>
-                    <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
+            
                 </a>
             </li>
 
@@ -196,13 +172,7 @@
                         </svg>
                     </div>
                     <span class="ms-3 font-medium">Upcoming events</span>
-                    <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
+                
                 </a>
             </li>
 
@@ -220,13 +190,7 @@
                         </svg>
                     </div>
                     <span class="ms-3 font-medium">Study Materials</span>
-                    <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
+                
                 </a>
             </li>
 
@@ -260,7 +224,7 @@
                         </svg>
                     </div>
                     <span class="flex-1 ms-3 text-left font-medium whitespace-nowrap">
-            Family Gathering Management
+            Family Gathering Mgmt
         </span>
                     <svg class="w-4 h-4 menu-arrow transition-transform duration-200"
                          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -274,7 +238,7 @@
                     class="submenu hidden py-20 space-y-4 pl-4 mt-2 border-l-2 border-teal-200 dark:border-teal-800 overflow-y-auto">
 
                     <!-- Register Member -->
-                    <li class="bg-white dark:bg-gray-800 shadow-md rounded-xl hover:shadow-lg transition duration-300">
+                    <li class="bg-white dark:bg-gray-800 shadow-md rounded-xl hover:shadow-lg transition duration-300 ">
                         <a href="{{route('admin.family_gathering')}}"
                            class="flex items-center w-full p-4 text-gray-600 dark:text-gray-300
                       rounded-xl group hover:bg-gradient-to-r hover:from-teal-500
@@ -287,8 +251,15 @@
                              10l-5.293 5.293a1 1 0 01-1.414 0z"
                                       clip-rule="evenodd"/>
                             </svg>
-                            Register Member & Registered Members
+                            Register & Registered Member(s)
                         </a>
+                         <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                  clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
                     </li>
 
                     <!-- Record Management -->
@@ -323,7 +294,11 @@
                              10l-5.293 5.293a1 1 0 01-1.414 0z"
                                       clip-rule="evenodd"/>
                             </svg>
-                            Family Gathering Registration
+                            Registed Paticipants 
+                             @php
+                            use Carbon\Carbon;
+                            @endphp
+                            ({{Carbon::now()->year}})
                         </a>
                     </li>
                 </ul>
@@ -359,7 +334,7 @@
                         </svg>
                     </div>
                     <span class="flex-1 ms-3 text-left font-medium whitespace-nowrap">
-            Financial Management
+            Financial Mgmt
         </span>
                     <svg class="w-4 h-4 menu-arrow transition-transform duration-200"
                          xmlns="http://www.w3.org/2000/svg" fill="none"
