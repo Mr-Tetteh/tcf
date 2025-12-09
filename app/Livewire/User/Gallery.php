@@ -10,7 +10,7 @@ class Gallery extends Component
 {
     public function render()
     {
-        $gallerys = \App\Models\Gallery::all();
-        return view('livewire.user.gallery', compact('gallerys'));
+        $galleries = \App\Models\Gallery::all();
+        return view('livewire.user.gallery', compact('galleries'));
     }
 }
