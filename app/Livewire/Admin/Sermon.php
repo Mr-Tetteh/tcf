@@ -120,7 +120,7 @@ public function update()
 
     public function render()
     {
-        $sermons = \App\Models\Sermon::all();
+        $sermons = \App\Models\Sermon::latest()->paginate(10)   ;
         return view('livewire.admin.sermon', compact('sermons'));
     }
 }

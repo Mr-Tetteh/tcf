@@ -524,9 +524,16 @@
 
 
                         <div class="info-grid">
-                            <div class="info-item full-width">
+                            <div class="info-item ">
                                 <div class="info-label">Full Name</div>
                                 <div class="info-value">${member.first_name} ${member.other_names || ''} ${member.last_name}</div>
+                                
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-label">Church</div>
+                                <div class="info-value">${member.church}</div>
+                                
                             </div>
 
                             <div class="info-item">
@@ -543,21 +550,18 @@
                                 <div class="info-value">${member.year || 'N/A'}</div>
                             </div>
 
-                            <div class="info-item full-width">
+                             <div class="info-item">
                                 <div class="info-label">Residence</div>
-                                <div class="info-value">${member.residence}</div>
+                                <div class="info-value">                                  
+                                    ${member.residence}
+                                </div>
                             </div>
 
-                            <div class="info-item full-width">
-                                <div class="info-label">Contact</div>
+                            <div class="info-item">
+                                <div class="info-label">Year</div>
                                 <div class="info-value">${member.contact}</div>
-                            </div>
-
-                            <div class="info-item full-width">
-                                <div class="info-label">Church</div>
-                                <div class="info-value">${member.church}</div>
-                            </div>
-                        </div>
+                            </div>                              
+                          </div>                                                   
                     </div>
 
                     <div class="card-footer">
