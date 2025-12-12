@@ -238,6 +238,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            {{ $sermons->links() }}
 
                         </div>
 

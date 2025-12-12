@@ -135,10 +135,10 @@ class FamilyGathering extends Component
             'gender' => $this->gender,
             'church' => $this->church,
         ]);
-        \sendWithSMSONLINEGH('233' . substr($this->contact, -9), 'Hello ' . ($this->gender == 'male' ? 'Mr' : "Mrs ") . $this->first_name . ' ' . $this->last_name . ', ' .
+        \sendWithSMSONLINEGH('233' . substr($this->contact, -9), 'Hello ' . ($this->gender == 'Male' ? 'Mr ' : "Mrs ") . $this->first_name . ' ' . $this->last_name . ', ' .
             'We are delighted to welcome you to the ' . Carbon::now()->year . ' Annual Family Gathering! ' .
             'Get ready for a time of joy, connection, and spiritual renewal. ' .
-            'May your stay be filled with blessings, laughter, and the presence of God.');
+            'May your stay be filled with blessings, laughter, and the presence of God. Thank you!');
         $this->resetForm();
 
         session()->flash('message', 'Member has been created successfully.');

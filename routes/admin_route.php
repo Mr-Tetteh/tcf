@@ -21,4 +21,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/registration_by_all_years',\App\Livewire\Admin\FamilyGatheringAllYears::class )->name('admin.familyGatheringAllYears');
         Route::get('/admin.events', \App\Livewire\Admin\Events::class)->name('admin.events');
     });
+
+    //    Route::get('sms', function () {
+    //    $response =  sendWithSMSONLINEGH('233559724772', "Dear  thank you for your generous donation of GHS o support our funeral services. Your contribution is greatly appreciated. - Swift Care"); 
+    //    return response()->json([
+    //        'response' => $response,
+    //    ]);
+    // });
 });

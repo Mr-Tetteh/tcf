@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
             'contact' => '0559724772',
             'gender' => 'male',
             'date_of_birth' => '2000-10-29',
-            'role' => 'admin',
+            'role' => 'superAdmin',
             'email' => 'danielstay73@gmail.com',
             'password' => Hash::make('Tetteh0244?'),
             'created_at' => now(),
