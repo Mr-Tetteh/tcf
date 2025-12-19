@@ -59,58 +59,45 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div class="space-y-2">
                                 <label for="firstName" class="block text-sm font-medium text-gray-700">
-                                    First Name <span class="text-red-500">*</span>
+                                    Full Name <span class="text-red-500">*</span>
                                 </label>
                                 <input
-                                    wire:model="first_name"
+                                    wire:model="full_name"
                                     type="text"
-                                    id="firstName"
-                                    name="firstName"
-                                    placeholder="Enter first name"
+                                    id="fullName"
+                                    name="fullName"
+                                    placeholder="Enter full name"
                                     autocomplete="Danielo"
                                     class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors duration-200"
                                 >
                                 <div class="text-red-400 text-sm">
-                                    @error('first_name') {{$message}} @enderror
+                                    @error('full_name') {{$message}} @enderror
                                 </div>
                             </div>
 
-                            <div class="space-y-2">
-                                <label for="lastName" class="block text-sm font-medium text-gray-700">
-                                    Last Name <span class="text-red-500">*</span>
+                             <div class="space-y-2">
+                                <label for="contact" class="block text-sm font-medium text-gray-700">
+                                    Contact Number <span class="text-red-500">*</span>
                                 </label>
                                 <input
-                                    wire:model="last_name"
-                                    type="text"
-                                    id="lastName"
-                                    name="lastName"
-                                    placeholder="Enter last name"
+                                    wire:model="contact"
+                                    type="number"
+                                    id="contact"
+                                    name="contact"
+                                    placeholder="Enter contact number"
                                     class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors duration-200"
                                 >
                                 <div class="text-red-400 text-sm">
-                                    @error('last_name') {{$message}} @enderror
+                                    @error('contact') {{$message}} @enderror
                                 </div>
                             </div>
+
+                            
                         </div>
 
                         <!-- Other Names and Residence -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <label for="otherNames" class="block text-sm font-medium text-gray-700">
-                                    Other Names
-                                </label>
-                                <input
-                                    wire:model="other_names"
-                                    type="text"
-                                    id="otherNames"
-                                    name="otherNames"
-                                    placeholder="Enter other names"
-                                    class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors duration-200"
-                                >
-                                <div class="text-red-400 text-sm">
-                                    @error('other_names') {{$message}} @enderror
-                                </div>
-                            </div>
+                            
 
                             <div class="space-y-2">
                                 <label for="residence" class="block text-sm font-medium text-gray-700">
@@ -128,64 +115,28 @@
                                     @error('residence') {{$message}} @enderror
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Gender and Contact -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <label for="gender" class="block text-sm font-medium text-gray-700">
-                                    Gender <span class="text-red-500">*</span>
-                                </label>
-                                <select
-                                    wire:model="gender"
-                                    id="gender"
-                                    name="gender"
-                                    class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors duration-200"
-                                >
-                                    <option value="">Select gender</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                                <div class="text-red-400 text-sm">
-                                    @error('gender') {{$message}} @enderror
-                                </div>
-                            </div>
-
-                            <div class="space-y-2">
-                                <label for="contact" class="block text-sm font-medium text-gray-700">
-                                    Contact Number <span class="text-red-500">*</span>
-                                </label>
-                                <input
-                                    wire:model="contact"
-                                    type="number"
-                                    id="contact"
-                                    name="contact"
-                                    placeholder="Enter contact number"
-                                    class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors duration-200"
-                                >
-                                <div class="text-red-400 text-sm">
-                                    @error('contact') {{$message}} @enderror
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Church -->
-                        <div class="space-y-2">
+                               <div class="space-y-2">
                             <label for="church" class="block text-sm font-medium text-gray-700">
-                                Church <span class="text-red-500">*</span>
+                                Demomination <span class="text-red-500">*</span>
                             </label>
                             <input
-                                wire:model="church"
+                                wire:model="denomination"
                                 type="text"
-                                id="church"
-                                name="church"
-                                placeholder="Enter church name"
+                                id="denomination"
+                                name="denomination"
+                                placeholder="Enter denomination"
                                 class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors duration-200"
                             >
                             <div class="text-red-400 text-sm">
-                                @error('church') {{$message}} @enderror
+                                @error('denomination') {{$message}} @enderror
                             </div>
                         </div>
+                        </div>
+
+                    
+
+                     
 
                         <!-- Action Buttons -->
                         <div class="pt-6 space-y-4">
@@ -209,14 +160,7 @@
                                     <h2 class="text-2xl font-bold text-gray-900">Registered Members</h2>
                                     <p class="mt-1 text-sm text-gray-500">For the year {{2025}}</p>
                                 </div>
-                                <div class="flex space-x-4">
-                                    <div class="bg-blue-50 rounded-lg px-4 py-2">
-                                        <span class="text-sm font-medium text-blue-600">Males: {{$males}}</span>
-                                    </div>
-                                    <div class="bg-pink-50 rounded-lg px-4 py-2">
-                                        <span class="text-sm font-medium text-pink-600">Females: {{$females}}</span>
-                                    </div>
-                                </div>
+                               
                             </div>
 
                             <!-- Table Section -->
@@ -227,18 +171,19 @@
                                         <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                                             Full Name
                                         </th>
+
+                                           <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
+                                            Contact
+                                        </th>
+
                                         <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                                             Residence
                                         </th>
+                                     
                                         <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-                                            Contact
+                                            Denomination
                                         </th>
-                                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-                                            Gender
-                                        </th>
-                                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-                                            Church
-                                        </th>
+                                     
                                         <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                                             Actions
                                         </th>
@@ -249,22 +194,20 @@
                                         <tr class="hover:bg-gray-50 transition-all duration-200">
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div
-                                                    class="text-sm font-medium text-gray-900">{{ $family->first_name }} {{ $family->other_names }} {{ $family->last_name }}</div>
+                                                    class="text-sm font-medium text-gray-900">{{ $family->full_name }}</div>
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="text-sm text-gray-600">{{ $family->residence }}</div>
-                                            </td>
+
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="text-sm text-gray-600">{{ $family->contact }}</div>
                                             </td>
+
                                             <td class="px-6 py-4 whitespace-nowrap">
-                                <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full
-                                    {{ $family->gender == 'Male' ? 'bg-blue-100 text-blue-800' : 'bg-pink-100 text-pink-800' }}">
-                                    {{ $family->gender }}
-                                </span>
+                                                <div class="text-sm text-gray-600">{{ $family->residence }}</div>
                                             </td>
+                                            
+                                           
                                             <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="text-sm text-gray-600">{{ $family->church }}</div>
+                                                <div class="text-sm text-gray-600">{{ $family->denomination }}</div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                                                 <button wire:click="edit({{$family->id}})"
@@ -526,25 +469,16 @@
                         <div class="info-grid">
                             <div class="info-item ">
                                 <div class="info-label">Full Name</div>
-                                <div class="info-value">${member.first_name} ${member.other_names || ''} ${member.last_name}</div>
+                                <div class="info-value">${member.full_name}</div>
                                 
                             </div>
                             
                             <div class="info-item">
-                                <div class="info-label">Church</div>
-                                <div class="info-value">${member.church}</div>
-                                
+                                <div class="info-label">Denomination</div>
+                                <div class="info-value">${member.denomination}</div>
                             </div>
 
-                            <div class="info-item">
-                                <div class="info-label">Gender</div>
-                                <div class="info-value">
-                                    <span class="gender-badge ${member.gender === 'Male' ? 'gender-male' : 'gender-female'}">
-                                        ${member.gender}
-                                    </span>
-                                </div>
-                            </div>
-
+                            
                             <div class="info-item">
                                 <div class="info-label">Year</div>
                                 <div class="info-value">${member.year || 'N/A'}</div>

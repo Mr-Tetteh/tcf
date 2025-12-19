@@ -17,13 +17,10 @@ class FamilyGathering extends Component
     use WithFileUploads;
 
     #[Layout('layout.admin.partials.website-base-admin')]
-    public $first_name;
-    public $last_name;
-    public $other_names;
+    public $full_name;
     public $residence;
     public $contact;
-    public $church;
-    public $gender;
+    public $denomination;
     public $year;
     public $family_id;
     public $isEdit = false;
@@ -33,24 +30,19 @@ class FamilyGathering extends Component
     public $uploadSuccess = '';
 
     protected $rules = [
-        'first_name' => 'required|string',
-        'last_name' => 'required|string',
-        'residence' => 'required|string',
+        'full_name' => 'required|string',
         'contact' => 'required|digits_between:9,10',
-        'gender' => 'required|string',
-        'church' => 'required|string',
+        'residence' => 'required|string',
+        'denomination' => 'required|string',
 
     ];
 
     public function resetForm()
     {
-        $this->first_name = '';
-        $this->last_name = '';
-        $this->other_names = '';
-        $this->residence = '';
+        $this->full_name = '';
         $this->contact = '';
-        $this->gender = '';
-        $this->church = '';
+        $this->residence = '';
+        $this->denomination = '';
         $this->csv = '';
 
     }
@@ -79,13 +71,10 @@ class FamilyGathering extends Component
     {
         $family = \App\Models\FamilyGathering::findOrFail($id);
         $this->family_id = $family->id;
-        $this->first_name = $family->first_name;
-        $this->last_name = $family->last_name;
-        $this->other_names = $family->other_names;
+        $this->full_name = $family->full_name;
         $this->residence = $family->residence;
         $this->contact = $family->contact;
-        $this->gender = $family->gender;
-        $this->church = $family->church;
+        $this->denomination = $family->denomination;
         $this->isEdit = true;
 
     }
@@ -95,13 +84,10 @@ class FamilyGathering extends Component
         $this->validate();
         $family = \App\Models\FamilyGathering::findOrFail($this->family_id);
         $family->update([
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
-            'other_names' => $this->other_names,
+            'full_name' => $this->full_name,
             'residence' => $this->residence,
             'contact' => $this->contact,
-            'gender' => $this->gender,
-            'church' => $this->church
+            'denomination' => $this->denomination   
         ]);
         $this->resetForm();
         session()->flash('message', 'Family gathering details updated successfully.');
@@ -127,18 +113,21 @@ class FamilyGathering extends Component
     {
         $this->validate();
         \App\Models\FamilyGathering::create([
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
-            'other_names' => $this->other_names,
+            'full_name' => $this->full_name,
             'residence' => $this->residence,
-            'contact' => '233' . substr($this->contact, -9),
-            'gender' => $this->gender,
-            'church' => $this->church,
+            'contact' => $this->contact,
+            'denomination' => $this->denomination,
         ]);
-        \sendWithSMSONLINEGH('233' . substr($this->contact, -9), 'Hello ' . ($this->gender == 'Male' ? 'Mr ' : "Mrs ") . $this->first_name . ' ' . $this->last_name . ', ' .
+        \sendWithSMSONLINEGH(
+            '233' . substr($this->contact, -9),
+            'Hello, ' . $this->full_name . ', ' .
             'We are delighted to welcome you to the ' . Carbon::now()->year . ' Annual Family Gathering! ' .
             'Get ready for a time of joy, connection, and spiritual renewal. ' .
-            'May your stay be filled with blessings, laughter, and the presence of God. Thank you!');
+            'May your stay be filled with blessings, laughter, and the presence of God. Awurade Yesu!'
+        );
+
+$this->resetForm();
+
         $this->resetForm();
 
         session()->flash('message', 'Member has been created successfully.');
@@ -154,10 +143,7 @@ class FamilyGathering extends Component
 
         $familiesByYear = \App\Models\FamilyGathering::where('year', $current_year)->latest()->paginate(10);
 
-        $males = \App\Models\FamilyGathering::where('year', $current_year)->where('gender', 'Male')->count();
-        $females = \App\Models\FamilyGathering::where('year', $current_year)->where('gender', 'Female')->count();
 
-
-        return view('livewire.admin.family-gathering', compact('familiesByYear', 'males', 'females'));
+        return view('livewire.admin.family-gathering', compact('familiesByYear', ));
     }
 }

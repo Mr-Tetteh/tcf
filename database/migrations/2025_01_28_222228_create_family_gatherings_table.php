@@ -13,13 +13,10 @@ return new class extends Migration
     {
         Schema::create('family_gatherings', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('other_names')->nullable();
-            $table->string('gender');
-            $table->string('residence');
+            $table->string('full_name');
             $table->string('contact');
-            $table->string('church');
+            $table->string('denomination');
+            $table->string(column: 'residence');
             $table->string('year');
             $table->timestamps();
         });

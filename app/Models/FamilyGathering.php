@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FamilyGathering extends Model
 {
-    protected $fillable = ['first_name', 'last_name', 'other_names', 'residence', 'gender', 'contact', 'church', 'year'];
+    protected $fillable = ['full_name', 'contact', 'denomination', 'residence', 'year'];
 
 
 
