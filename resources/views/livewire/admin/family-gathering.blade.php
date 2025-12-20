@@ -134,10 +134,6 @@
                         </div>
                         </div>
 
-                    
-
-                     
-
                         <!-- Action Buttons -->
                         <div class="pt-6 space-y-4">
                             <button
@@ -210,6 +206,16 @@
                                                 <div class="text-sm text-gray-600">{{ $family->denomination }}</div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                                                 <button onclick="printMemberCard({{ json_encode($family) }})"
+                                                        class="inline-flex items-center px-3 py-1.5 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5"
+                                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                              stroke-width="2"
+                                                              d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+                                                    </svg>
+                                                    Print
+                                                </button>
                                                 <button wire:click="edit({{$family->id}})"
                                                         class="inline-flex items-center px-3 py-1.5 bg-indigo-50 text-indigo-700 rounded-lg hover:bg-indigo-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5"
@@ -230,16 +236,7 @@
                                                     </svg>
                                                     Delete
                                                 </button>
-                                                <button onclick="printMemberCard({{ json_encode($family) }})"
-                                                        class="inline-flex items-center px-3 py-1.5 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5"
-                                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                              stroke-width="2"
-                                                              d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
-                                                    </svg>
-                                                    Print
-                                                </button>
+                                               
                                             </td>
                                         </tr>
                                     @endforeach
@@ -458,9 +455,7 @@
                 <div class="card-container">
                     <div class="card-header">
                         <div class="header-title">Tabernacle Christian Fellowship</div>
-                        <div class="header-subtitle">Family Gathering</div>
-                        <div class="header-subtitle">{{date('Y-m-d')}}</div>
-
+                        <div class="header-subtitle">Family Gathering @php echo date('Y'); @endphp</div>
                     </div>
 
                     <div class="card-body">
@@ -478,11 +473,7 @@
                                 <div class="info-value">${member.denomination}</div>
                             </div>
 
-                            
-                            <div class="info-item">
-                                <div class="info-label">Year</div>
-                                <div class="info-value">${member.year || 'N/A'}</div>
-                            </div>
+                        
 
                              <div class="info-item">
                                 <div class="info-label">Residence</div>

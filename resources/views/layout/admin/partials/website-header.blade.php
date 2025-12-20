@@ -276,11 +276,8 @@
                              10l-5.293 5.293a1 1 0 01-1.414 0z"
                                       clip-rule="evenodd"/>
                             </svg>
-                            Registed Paticipants 
-                             @php
-                            use Carbon\Carbon;
-                            @endphp
-                            ({{Carbon::now()->year}})
+                            Registered Participants All Years
+                             
                         </a>
                     </li>
 
