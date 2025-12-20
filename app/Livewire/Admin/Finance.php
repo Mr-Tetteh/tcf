@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -75,9 +76,19 @@ class Finance extends Component
 
     }
 
-    public function render()
-    {
-        $datas = \App\Models\Finance::all();
-        return view('livewire.admin.finance', compact('datas'));
-    }
+   
+public function render()
+{
+    // Group by date first, then by name within each date
+    $datas = \App\Models\Finance::whereYear('created_at',  Carbon::now()->year)->orderBy('created_at', 'desc')
+        ->get()
+        ->groupBy(function($item) {
+            return $item->created_at->format('Y-m-d'); // Group by date
+        })
+        ->map(function($dayRecords) {
+            return $dayRecords->groupBy('name'); // Then group by name within each day
+        });
+    
+    return view('livewire.admin.finance', compact('datas'));
+}
 }
