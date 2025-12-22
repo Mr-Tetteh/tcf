@@ -194,6 +194,26 @@
                 </a>
             </li>
 
+                <li>
+                <a href="{{route('admin.pledge')}}"
+                   class="flex items-center p-3 text-gray-700 rounded-xl dark:text-gray-200 hover:bg-gradient-to-r hover:from-amber-500 hover:to-orange-600 hover:text-white dark:hover:from-amber-600 dark:hover:to-orange-700 group transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg border border-transparent hover:border-amber-200 dark:hover:border-amber-800">
+                    <div
+                        class="p-2 bg-amber-100 dark:bg-amber-900 rounded-lg group-hover:bg-white/20 transition-colors duration-300">
+                        <svg
+                            class="w-5 h-5 text-amber-600 dark:text-amber-400 group-hover:text-white transition duration-300"
+                            fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5v-12c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v12z"/>
+                        </svg>
+                    </div>
+                    <span class="ms-3 font-medium">Pledge</span>
+                
+                </a>
+            </li>
+
+
+           
+
             <!-- Family Gathering Management -->
             <li class="menu-item relative z-20">
                 <button
