@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/contact', \App\Livewire\Admin\Contact::class)->name('admin.contact');
         Route::get('/registration_by_all_years',\App\Livewire\Admin\FamilyGatheringAllYears::class )->name('admin.familyGatheringAllYears');
         Route::get('/admin.events', \App\Livewire\Admin\Events::class)->name('admin.events');
+        Route::get('/pledge', \App\Livewire\Admin\Pledge::class)->name('admin.pledge');
     });
 
     //    Route::get('sms', function () {
