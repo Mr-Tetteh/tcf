@@ -10,7 +10,7 @@ class Events extends Component
     #[Layout('layout.user.partials.website-base-user')]
     public function render()
     {
-//        $events = Events
-        return view('livewire.user.events');
+       $datas = \App\Models\Events::latest()->get();
+        return view('livewire.user.events', compact('datas'));
     }
 }

@@ -23,6 +23,13 @@ return new class extends Migration
             $table->string('event_speaker_2')->nullable();
             $table->string('event_speaker_3')->nullable();
             $table->string('event_speaker_4')->nullable();
+            $table->string('event_speaker_5')->nullable();
+            $table->string('event_speaker_6')->nullable();
+            $table->string('event_speaker_7')->nullable();
+            $table->string('self_registration_link')->nullable();
+
+
+
 
             $table->timestamps();
         });
