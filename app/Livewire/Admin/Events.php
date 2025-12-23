@@ -12,6 +12,7 @@ class Events extends Component
     use WithFileUploads;
 
     #[Layout('layout.admin.partials.website-base-admin')]
+    public $event_id;
     public $event_name;
     public $event_date;
     public $event_time;
@@ -22,8 +23,11 @@ class Events extends Component
     public $event_speaker_2;
     public $event_speaker_3;
     public $event_speaker_4;
+    public $event_speaker_5;
+    public $event_speaker_6;
+    public $event_speaker_7;
+    public $self_registration_link;
     public $isEdit = false;
-    public $event_id;
 
 
     protected $rules = [
@@ -37,14 +41,13 @@ class Events extends Component
         'event_speaker_2' => 'nullable|string',
         'event_speaker_3' => 'nullable|string',
         'event_speaker_4' => 'nullable|string',
+        'event_speaker_5' => 'nullable|string',
+        'event_speaker_6' => 'nullable|string',
+        'event_speaker_7' => 'nullable|string',
+        'self_registration_link' => 'nullable|string',
     ];
 
-    protected $messages = [
-        'event_speaker_1.required' => 'The main speaker  field is required.',
-        'event_speaker_2.string' => 'The main speaker a string.',
-        'event_speaker_3.string' => 'The main speaker a string.',
-        'event_speaker_4.string' => 'The main speaker a string.',
-    ];
+  
 
     public function resetForm()
     {
@@ -58,6 +61,10 @@ class Events extends Component
         $this->event_speaker_2 = '';
         $this->event_speaker_3 = '';
         $this->event_speaker_4 = '';
+        $this->event_speaker_5 = '';
+        $this->event_speaker_6 = '';
+        $this->event_speaker_7 = '';
+        $this->self_registration_link = '';
     }
 
 
@@ -76,6 +83,10 @@ class Events extends Component
         $this->event_speaker_2 = $event->event_speaker_2;
         $this->event_speaker_3 = $event->event_speaker_3;
         $this->event_speaker_4 = $event->event_speaker_4;
+        $this->event_speaker_5 = $event->event_speaker_5;
+        $this->event_speaker_6 = $event->event_speaker_6;
+        $this->event_speaker_7 = $event->event_speaker_7;
+        $this->self_registration_link = $event->self_registration_link;
 
     }
 
@@ -98,6 +109,10 @@ class Events extends Component
             'event_speaker_2' => $this->event_speaker_2,
             'event_speaker_3' => $this->event_speaker_3,
             'event_speaker_4' => $this->event_speaker_4,
+            'event_speaker_5' => $this->event_speaker_5,
+            'event_speaker_6' => $this->event_speaker_6,
+            'event_speaker_7' => $this->event_speaker_7,
+            'self_registration_link' => $this->self_registration_link,
         ]);
 
         session()->flash('message', 'Event updated successfully.');
@@ -125,6 +140,10 @@ class Events extends Component
             'event_speaker_2' => $this->event_speaker_2,
             'event_speaker_3' => $this->event_speaker_3,
             'event_speaker_4' => $this->event_speaker_4,
+            'event_speaker_5' => $this->event_speaker_5,
+            'event_speaker_6' => $this->event_speaker_6,
+            'event_speaker_7' => $this->event_speaker_7,
+            'self_registration_link' => $this->self_registration_link,
         ]);
         session()->flash('message', 'Event created successfully.');
         $this->resetForm();

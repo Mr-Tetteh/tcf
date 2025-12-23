@@ -219,7 +219,97 @@
                                         {{$message}}
                                         @enderror
                                     </div>
+                                     <div class="relative">
+                                        <label class="text-sm font-medium text-gray-700 block mb-2">
+                                            Fifth Events speaker 
+                                        </label>
+                                        <input
+                                            type="text"
 
+                                            class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-gray-50 hover:bg-white"
+                                            placeholder="Enter the title of the record"
+                                            wire:model="event_speaker_5"
+                                        >
+                                    </div>
+                                    <div class="text-red-600">
+                                        @error('event_speaker_5')
+                                        {{$message}}
+                                        @enderror
+                                    </div>
+                                     <div class="relative">
+                                        <label class="text-sm font-medium text-gray-700 block mb-2">
+                                            Sixth Events speaker 
+                                        </label>
+                                        <input
+                                            type="text"
+
+                                            class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-gray-50 hover:bg-white"
+                                            placeholder="Enter the title of the record"
+                                            wire:model="event_speaker_6"
+                                        >
+                                    </div>
+                                    <div class="text-red-600">
+                                        @error('event_speaker_6')
+                                        {{$message}}
+                                        @enderror
+                                    </div>
+
+                                     <div class="relative">
+                                        <label class="text-sm font-medium text-gray-700 block mb-2">
+                                            Seventh Events speaker 
+                                        </label>
+                                        <input
+                                            type="text"
+
+                                            class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-gray-50 hover:bg-white"
+                                            placeholder="Enter the title of the record"
+                                            wire:model="event_speaker_7"
+                                        >
+                                    </div>
+                                    <div class="text-red-600">
+                                        @error('event_speaker_7')
+                                        {{$message}}
+                                        @enderror
+                                    </div>
+
+
+                                    <div class="relative">
+                                        <label class="text-sm font-medium text-gray-700 block mb-2">
+                                            Seventh Events speaker 
+                                        </label>
+                                        <input
+                                            type="text"
+
+                                            class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-gray-50 hover:bg-white"
+                                            placeholder="Enter the title of the record"
+                                            wire:model="event_speaker_7"
+                                        >
+                                    </div>
+                                    <div class="text-red-600">
+                                        @error('event_speaker_7')
+                                        {{$message}}
+                                        @enderror
+                                    </div>
+
+                                    <div class="relative">
+                                        <label class="text-sm font-medium text-gray-700 block mb-2">
+                                           Self Registration Link
+                                        </label>
+                                        <input
+                                            type="text"
+
+                                            class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-gray-50 hover:bg-white"
+                                            placeholder="Enter the title of the record"
+                                            wire:model="self_registration_link"
+                                        >
+                                    </div>
+                                    <div class="text-red-600">
+                                        @error('self_registration_link')
+                                        {{$message}}
+                                        @enderror
+                                    </div>
+
+                                    
 
                                     <!-- Submit Button -->
                                     <button
@@ -266,6 +356,18 @@
                                     </th>
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Fourth Event
                                         Speaker
+                                    </th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Fifth Event
+                                        Speaker
+                                    </th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Sixth Event
+                                        Speaker
+                                    </th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Seventh Event
+                                        Speaker
+                                    </th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Self Registration
+                                        Link
                                     </th>
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Action</th>
 
@@ -359,6 +461,39 @@
                                                 <div class="ml-4">
                                                     <div
                                                         class="font-medium text-gray-900">{{$record->event_speaker_4}}</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-gray-500">
+                                            <div class="flex items-center">
+                                                <div class="ml-4">
+                                                    <div
+                                                        class="font-medium text-gray-900">{{$record->event_speaker_5}}</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-gray-500">
+                                            <div class="flex items-center">
+                                                <div class="ml-4">
+                                                    <div
+                                                        class="font-medium text-gray-900">{{$record->event_speaker_6}}</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-gray-500">
+                                            <div class="flex items-center">
+                                                <div class="ml-4">
+                                                    <div
+                                                        class="font-medium text-gray-900">{{$record->event_speaker_7}}</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-gray-500">
+                                            <div class="flex items-center">
+                                                <div class="ml-4">
+                                                    <a href="{{$record->self_registration_link}}"
+                                                       target="_blank"
+                                                       class="text-blue-500 hover:text-blue-700 underline">{{$record->self_registration_link}}</a>
                                                 </div>
                                             </div>
                                         </td>
