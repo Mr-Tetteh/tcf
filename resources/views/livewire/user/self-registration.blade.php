@@ -33,7 +33,7 @@
                                 <h1 class="text-3xl font-bold mb-2">
                                     Family Gathering {{\Carbon\Carbon::now()->year}}
                                 </h1>
-                                <p class="text-blue-100 text-sm font-medium">Join us for a memorable celebration</p>
+                                <p class="text-blue-100 text-sm font-medium">Self Registration Portal</p>
                             </div>
                             <div class="hidden sm:block">
                                 <svg class="w-16 h-16 text-white/20" fill="currentColor" viewBox="0 0 24 24">
@@ -100,7 +100,7 @@
                                             type="tel"
                                             id="contact"
                                             name="contact"
-                                            placeholder="(233) 000-0000"
+                                            placeholder="0555555555"
                                             class="w-full pl-12 pr-4 py-3.5 rounded-xl border-2 border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all duration-200 outline-none"
                                         >
                                     </div>
