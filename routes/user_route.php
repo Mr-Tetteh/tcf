@@ -10,6 +10,7 @@ Route::prefix('users')->group(function () {
     Route::get('events', \App\Livewire\User\Events::class)->name('events');
     Route::get('contact', \App\Livewire\User\Contact::class)->name('contact');
     Route::get('/study-material', StudyMaterial::class)->name('study-material');
+    Route::get('/self-registration', \App\Livewire\User\SelfRegistration::class)->name('self-registration');
 
 
 
