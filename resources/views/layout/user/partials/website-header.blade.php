@@ -19,7 +19,7 @@
             <!-- Desktop Navigation -->
             <nav class="hidden lg:block">
                 <ul class="flex items-center space-x-1">
-                    <li class="relative group">
+                    {{-- <li class="relative group">
                         <a href="{{route('admin.dashboard')}}" class="flex items-center px-4 py-2 text-sm font-medium text-gray-700 rounded-lg group-hover:text-blue-600 group-hover:bg-blue-50 transition-all duration-200">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -27,7 +27,7 @@
                             Admin
                             <span class="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-blue-500/0 via-blue-500/70 to-blue-500/0 opacity-0 transition-opacity duration-200 group-hover:opacity-100"></span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="relative group">
                         <a href="{{route('home')}}" class="flex items-center px-4 py-2 text-sm font-medium text-gray-700 rounded-lg group-hover:text-blue-600 group-hover:bg-blue-50 transition-all duration-200">
                             Home
@@ -75,7 +75,7 @@
                     </li>
 
                     <li>
-                        <a href="{{route('self-registration')}}" class="ml-3 inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg shadow-sm shadow-blue-200 hover:bg-blue-700 hover:shadow-md hover:shadow-blue-200 transition-all duration-200">
+                        <a href="{{route('self-registration')}}" class="ml-3 inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-emerald-600 rounded-lg shadow-sm shadow-blue-200 hover:bg-blue-700 hover:shadow-md hover:shadow-blue-200 transition-all duration-200">
                             Family Gathering Self Registration
                             <svg class="w-4 h-4 ml-2 -mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -96,12 +96,12 @@
             <!-- Mobile Menu (Hidden by default) -->
             <div class=" hidden lg:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-sm shadow-lg border-t border-gray-100 nav_menu">
                 <nav class="container mx-auto px-4 py-6 space-y-1">
-                    <a href="{{route('admin.dashboard')}}" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 rounded-lg hover:text-blue-600 hover:bg-blue-50 transition-all duration-200">
+                    {{-- <a href="{{route('admin.dashboard')}}" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 rounded-lg hover:text-blue-600 hover:bg-blue-50 transition-all duration-200">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                         Admin
-                    </a>
+                    </a> --}}
 
                     <a href="{{route('home')}}" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 rounded-lg hover:text-blue-600 hover:bg-blue-50 transition-all duration-200"> Home</a>
                     <a href="{{route('about')}}" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 rounded-lg hover:text-blue-600 hover:bg-blue-50 transition-all duration-200">About</a>
@@ -113,7 +113,14 @@
                         <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                         </svg>
+                    </a>                   
+                    <a href="{{route('self-registration')}}" class="flex items-center px-4 py-3 text-sm font-medium text-white bg-emerald-600 rounded-lg hover:bg-blue-700 transition-all duration-200 transform hover:scale-105 hover:shadow-lg active:scale-95">
+                            Family Gathering Self Registration
+                            <svg class="w-4 h-4 ml-2 -mr-1 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
                     </a>
+                
                 </nav>
             </div>
         </div>
