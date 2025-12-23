@@ -73,6 +73,15 @@
                             </svg>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="{{route('self-registration')}}" class="ml-3 inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg shadow-sm shadow-blue-200 hover:bg-blue-700 hover:shadow-md hover:shadow-blue-200 transition-all duration-200">
+                            Family Gathering Self Registration
+                            <svg class="w-4 h-4 ml-2 -mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </li>
                 </ul>
             </nav>
 
