@@ -69,7 +69,7 @@ class RecordManagement extends Component
             'end' => $this->end,
 
         ]);
-        $this->isEdit = true;
+        $this->isEdit = false;
         $this->resetForm();
         session()->flash('message', 'Record updated successfully.');
     }
