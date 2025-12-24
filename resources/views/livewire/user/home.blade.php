@@ -19,7 +19,7 @@
                     </p>
 
                     <a class="group mt-8 inline-flex items-center space-x-2 rounded-full bg-purple-600 px-8 py-4 text-white transition-all hover:bg-purple-700"
-                       href="#">
+                       href="{{ route('events') }}">
                         Upcoming Events
                         <svg class="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none"
                              stroke="currentColor" viewBox="0 0 24 24">
