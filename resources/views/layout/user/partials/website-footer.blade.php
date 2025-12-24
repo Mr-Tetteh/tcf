@@ -110,7 +110,7 @@
                 <p class="text-gray-400">
                     Designed by
                     <a href="#" class="relative inline-block group">
-                        <span class="text-blue-400 group-hover:text-blue-300 transition-colors">Mr.Tetteh</span>
+                        <a  href="tel:0559724772" class="text-blue-400 group-hover:text-blue-300 transition-colors">Mr.Tetteh</a>
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span>
                     </a>
                 </p>
