@@ -272,25 +272,6 @@
                                         @enderror
                                     </div>
 
-
-                                    <div class="relative">
-                                        <label class="text-sm font-medium text-gray-700 block mb-2">
-                                            Seventh Events speaker 
-                                        </label>
-                                        <input
-                                            type="text"
-
-                                            class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-gray-50 hover:bg-white"
-                                            placeholder="Enter the title of the record"
-                                            wire:model="event_speaker_7"
-                                        >
-                                    </div>
-                                    <div class="text-red-600">
-                                        @error('event_speaker_7')
-                                        {{$message}}
-                                        @enderror
-                                    </div>
-
                                     <div class="relative">
                                         <label class="text-sm font-medium text-gray-700 block mb-2">
                                            Self Registration Link
