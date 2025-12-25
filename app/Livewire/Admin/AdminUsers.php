@@ -71,8 +71,6 @@ class AdminUsers extends Component
     public function delete($id)
     {
         User::destroy($id);
-
-
     }
 
     public function update()

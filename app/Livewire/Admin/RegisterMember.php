@@ -29,6 +29,7 @@ class RegisterMember extends Component
     public $isEdit = false;
     public $modal = false;
     public $csv;
+    public $deleteId;
 
 
     public function restForm()
@@ -131,10 +132,12 @@ class RegisterMember extends Component
         $this->closeModal();
     }
 
-    public function delete($id)
+    public function delete()
     {
-        \App\Models\RegisterMember::findOrFail($id)->delete();
+        \App\Models\RegisterMember::findOrFail($this->deleteId)->delete();
         session()->flash('message', 'Member deleted successfully.');
+        $this->deleteId = null;
+
 
     }
 

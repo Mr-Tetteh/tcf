@@ -10,6 +10,7 @@ use Livewire\Component;
 class Finance extends Component
 {
     #[Layout('layout.admin.partials.website-base-admin')]
+public $deleteId;
 
     public $title;
     public $amount;
@@ -69,12 +70,15 @@ class Finance extends Component
         session()->flash('message', 'Financial record Updated Successfully.');
         $this->isEdit = false;
     }
-    public function delete($id)
-    {
-        \App\Models\Finance::findOrFail($id)->delete();
-        session()->flash('message', 'Financial record Deleted Successfully.');
+   public function delete()
+{
+    \App\Models\Finance::findOrFail($this->deleteId)->delete();
+    session()->flash('message', 'Record deleted successfully.');
+    $this->deleteId = null;
+}
 
-    }
+
+
 
    
 public function render()

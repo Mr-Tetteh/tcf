@@ -20,6 +20,7 @@ class Sermon extends Component
     public $sermon_file;
     public $isEdit = false;
     public $sermonId;
+    public $deleteId;
 
     public function resetForm()
     {
@@ -111,11 +112,11 @@ public function update()
 }
 
 
-    public function delete($id)
+    public function delete()
     {
-        \App\Models\Sermon::findOrFail($id)->delete();
-
-
+        \App\Models\Sermon::findOrFail($this->deleteId)->delete();
+        session()->flash('message', 'Sermon deleted successfully.');
+        $this->deleteId = null;
     }
 
     public function render()

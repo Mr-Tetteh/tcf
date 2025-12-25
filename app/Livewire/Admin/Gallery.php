@@ -14,8 +14,10 @@ class Gallery extends Component
     public $image;
     public $id;
     public $galleryId;
+    public $deleteId;
     public $isEdit = false;
     use WithFileUploads;
+
 
 
     protected $rules = [
@@ -78,9 +80,11 @@ class Gallery extends Component
        $this->isEdit = false;
        session()->flash('message', 'Image Updated Successfully.');
     }
-    public function delete($id)
+    public function delete()
     {
-        \App\Models\Gallery::findOrFail($id)->delete();
+        \App\Models\Gallery::findOrFail($this->deleteId)->delete();
+        session()->flash('message', 'Image deleted successfully.');
+        $this->deleteId = null;
 
     }
 
