@@ -74,6 +74,13 @@ class RecordManagement extends Component
         session()->flash('message', 'Record updated successfully.');
     }
 
+    public function delete($id)
+    {
+        $record = Records::findOrFail($id);
+        $record->delete();
+        session()->flash('message', 'Record deleted successfully.');
+    }
+
     public function render()
     {
         $records = Records::all();
