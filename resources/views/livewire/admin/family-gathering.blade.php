@@ -373,7 +373,6 @@
                                 </table>
                             </div>
                         </div>
-                        {{$familiesByYear->links()}}
                         <div id="printTemplate" style="display: none;">
 
                         </div>

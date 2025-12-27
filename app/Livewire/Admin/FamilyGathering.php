@@ -145,7 +145,7 @@ $this->resetForm();
 
         $current_year = Carbon::now()->year;
 
-        $familiesByYear = \App\Models\FamilyGathering::where('year', $current_year)->latest()->paginate(10);
+        $familiesByYear = \App\Models\FamilyGathering::where('year', $current_year)->latest()->get();
 
 
         return view('livewire.admin.family-gathering', compact('familiesByYear', ));
