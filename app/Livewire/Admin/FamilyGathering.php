@@ -121,6 +121,7 @@ class FamilyGathering extends Component
             'residence' => $this->residence,
             'contact' => $this->contact,
             'denomination' => $this->denomination,
+            'amount_paid' => $this->amount_paid
         ]);
         \sendWithSMSONLINEGH(
             '233' . substr($this->contact, -9),
