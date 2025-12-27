@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('events', function (Blueprint $table) {
+        Schema::table('events', callback: function (Blueprint $table) {
             $table->string('event_speaker_5')->nullable();
             $table->string('event_speaker_6')->nullable();
             $table->string('event_speaker_7')->nullable();

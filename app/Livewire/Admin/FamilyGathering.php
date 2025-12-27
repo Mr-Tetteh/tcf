@@ -28,6 +28,7 @@ class FamilyGathering extends Component
     public $csv;
     public $uploadError = '';
     public $uploadSuccess = '';
+    public $amount_paid;
 
     protected $rules = [
         'full_name' => 'required|string',
@@ -44,6 +45,7 @@ class FamilyGathering extends Component
         $this->residence = '';
         $this->denomination = '';
         $this->csv = '';
+        $this->amount_paid = '';
 
     }
 
@@ -75,6 +77,7 @@ class FamilyGathering extends Component
         $this->residence = $family->residence;
         $this->contact = $family->contact;
         $this->denomination = $family->denomination;
+        $this->amount_paid = $family->amount_paid;
         $this->isEdit = true;
 
     }
@@ -87,7 +90,8 @@ class FamilyGathering extends Component
             'full_name' => $this->full_name,
             'residence' => $this->residence,
             'contact' => $this->contact,
-            'denomination' => $this->denomination   
+            'denomination' => $this->denomination,
+            'amount_paid' => $this->amount_paid
         ]);
         $this->resetForm();
         session()->flash('message', 'Family gathering details updated successfully.');
