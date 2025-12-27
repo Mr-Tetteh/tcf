@@ -612,7 +612,7 @@
                             </div>
 
                             <div class="info-item">
-                                <div class="info-label">Year</div>
+                                <div class="info-label">Contact</div>
                                 <div class="info-value">${member.contact}</div>
                             </div>                              
                           </div>                                                   
