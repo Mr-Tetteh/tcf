@@ -116,6 +116,8 @@
                                 </div>
                             </div>
 
+                         
+
                                <div class="space-y-2">
                             <label for="church" class="block text-sm font-medium text-gray-700">
                                 Demomination <span class="text-red-500">*</span>
@@ -132,6 +134,23 @@
                                 @error('denomination') {{$message}} @enderror
                             </div>
                         </div>
+
+                           <div class="space-y-2">
+                                <label for="amount_paid" class="block text-sm font-medium text-gray-700">
+                                    Amount Paid <span class="text-red-500">*</span>
+                                </label>
+                                <input
+                                    wire:model="amount_paid"
+                                    type="text"
+                                    id="amount_paid"
+                                    name="amount_paid"
+                                    placeholder="Enter amount paid"
+                                    class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors duration-200"
+                                >
+                                <div class="text-red-400 text-sm">
+                                    @error('amount_paid') {{$message}} @enderror
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Action Buttons -->
@@ -179,7 +198,13 @@
                                         <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                                             Denomination
                                         </th>
-                                     
+
+                                
+
+                                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
+                                            Amount Paid
+                                        </th>
+
                                         <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                                             Actions
                                         </th>
@@ -204,6 +229,10 @@
                                            
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="text-sm text-gray-600">{{ $family->denomination }}</div>
+                                            </td>
+
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="text-sm text-gray-600">{{ $family->amount_paid }}</div>
                                             </td>
                                             <td class="px-6 py-4 text-sm font-medium">
     <div class="flex items-center gap-2 whitespace-nowrap">
