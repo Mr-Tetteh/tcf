@@ -373,6 +373,7 @@
                                 </table>
                             </div>
                         </div>
+                        
                         <div id="printTemplate" style="display: none;">
 
                         </div>
