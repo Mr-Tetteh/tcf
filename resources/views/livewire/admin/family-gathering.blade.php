@@ -411,7 +411,7 @@
                 <title>Member Card - ${member.first_name} ${member.last_name}</title>
                 <style>
                     @page {
-                        size: A3;
+                        size: A1;
                         margin: 0;
                     }
 
