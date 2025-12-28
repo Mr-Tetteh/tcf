@@ -77,11 +77,12 @@ class Expenditure extends Component
     }   
 
 
-    public function delete($id)
+    public function delete()
     {
-        $expenditure = \App\Models\Expenditure::findOrFail($id);
+        $expenditure = \App\Models\Expenditure::findOrFail($this->deleteId);
         $expenditure->delete();
         session()->flash('message', 'Expenditure Deleted Successfully.');
+        $this->deleteId = null;
     }   
 
     public function render()
