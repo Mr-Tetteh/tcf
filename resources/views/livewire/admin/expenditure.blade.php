@@ -130,6 +130,8 @@
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Name</th>
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Amount</th>
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Purpose</th>
+                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Date</th>
+
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 print:hidden">Actions</th>
                                 </tr>
                                 </thead>
@@ -145,6 +147,8 @@
                                             </span>
                                         </td>
                                         <td class="px-6 py-4 text-gray-500">{{$expenditure->purpose}}</td>
+                                        <td class="px-6 py-4 text-gray-500">{{ \Carbon\Carbon::parse($expenditure->created_at)->format('jS F, Y H:i') }}</td>
+
                                         <td class="px-6 py-4 print:hidden">
                                             <div class="flex space-x-3">
                                                 <button
