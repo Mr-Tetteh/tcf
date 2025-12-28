@@ -282,6 +282,24 @@
                     </div>
                     </li>
 
+                       <li class="bg-white dark:bg-gray-800 shadow-md rounded-xl hover:shadow-lg transition duration-300">
+                        <a href="{{route('admin.expenditure')}}"
+                           class="flex items-center w-full p-4 text-gray-600 dark:text-gray-300
+                      rounded-xl group hover:bg-gradient-to-r hover:from-teal-500
+                      hover:to-green-600 hover:text-white">
+                            <svg class="w-4 h-4 mr-2 text-teal-500 group-hover:text-white"
+                                 fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                      d="M10.293 15.707a1 1 0 010-1.414L14.586
+                             10l-4.293-4.293a1 1 0 111.414-1.414L16
+                             10l-5.293 5.293a1 1 0 01-1.414 0z"
+                                      clip-rule="evenodd"/>
+                            </svg>
+                            Expenditure Management
+                             
+                        </a>
+                    </li>
+
 
                      <li class="bg-white dark:bg-gray-800 shadow-md rounded-xl hover:shadow-lg transition duration-300">
                         <a href="{{route('admin.familyGatheringAllYears')}}"
@@ -300,6 +318,8 @@
                              
                         </a>
                     </li>
+
+                    
 
                     <!-- Record Management -->
                     <li class="bg-white dark:bg-gray-800 shadow-md rounded-xl hover:shadow-lg transition duration-300">
