@@ -411,7 +411,7 @@
                 <title>Member Card - ${member.first_name} ${member.last_name}</title>
                 <style>
                     @page {
-                        size: A2;
+                        size: A3;
                         margin: 0;
                     }
 
@@ -423,7 +423,7 @@
 
                     body {
                         width: 420mm;
-                        height: 594mm;
+                        height: 290mm;
                         font-family: 'Arial', sans-serif;
                         display: flex;
                         justify-content: center;
@@ -479,7 +479,7 @@
                         padding: 80px 100px;
                         display: flex;
                         flex-direction: column;
-                        gap: 50px;
+                        
                     }
 
                     .avatar-section {
