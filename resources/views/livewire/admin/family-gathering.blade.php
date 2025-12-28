@@ -370,7 +370,10 @@
                                         </tr>
                                     @endforeach
                                     </tbody>
+                                                                 <b class="text-3xl text-center">Grand Total:</b>  GHC {{ number_format($familiesByYear->flatten(2)->sum('amount_paid'), 2) }}
+
                                 </table>
+                                
                             </div>
                         </div>
                         
