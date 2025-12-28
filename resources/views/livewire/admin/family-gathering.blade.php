@@ -411,7 +411,7 @@
                 <title>Member Card - ${member.first_name} ${member.last_name}</title>
                 <style>
                     @page {
-                        size: A1;
+                        size: A3;
                         margin: 0;
                     }
 
@@ -463,14 +463,14 @@
                     }
 
                     .header-title {
-                        font-size: 72px;
+                        font-size: 82px;
                         font-weight: bold;
                         margin-bottom: 20px;
                         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
                     }
 
                     .header-subtitle {
-                        font-size: 36px;
+                        font-size: 40px;
                         opacity: 0.9;
                     }
 
@@ -517,7 +517,7 @@
                     }
 
                     .info-label {
-                        font-size: 28px;
+                        font-size: 42px;
                         color: #6b7280;
                         text-transform: uppercase;
                         letter-spacing: 2px;
@@ -526,7 +526,7 @@
                     }
 
                     .info-value {
-                        font-size: 42px;
+                        font-size: 62px;
                         color: #111827;
                         font-weight: bold;
                         word-wrap: break-word;
@@ -536,24 +536,7 @@
                         grid-column: 1 / -1;
                     }
 
-                    .gender-badge {
-                        display: inline-block;
-                        padding: 15px 40px;
-                        border-radius: 50px;
-                        font-size: 38px;
-                        font-weight: bold;
-                    }
-
-                    .gender-male {
-                        background: #dbeafe;
-                        color: #1e40af;
-                    }
-
-                    .gender-female {
-                        background: #fce7f3;
-                        color: #be185d;
-                    }
-
+                   
                     .card-footer {
                         background: #f9fafb;
                         padding: 40px;
