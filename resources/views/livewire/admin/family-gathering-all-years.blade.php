@@ -100,6 +100,14 @@
                                 </svg>
                             </span>
                         </th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                            <span class="flex items-center">
+                                <svg class="w-4 h-4 ms-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                                </svg>
+                            </span>
+                            Amount Paid
+                        </th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200 bg-white">
@@ -149,13 +157,23 @@
                                 {{ $family->denomination }}
                             </div>
                         </td>
+                        
                         <td class="px-6 py-4 whitespace-nowrap">
                             <span class="inline-flex px-3 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800 shadow-sm">
                                 {{ $family->year }}
                             </span>
                         </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                </svg>
+                                GHC{{ $family->amount_paid }}
+                            </div>
+                        </td>
                     </tr>
                     @endforeach
+                    <b>Grand Total: GHC {{ $families->sum('amount_paid') }}</b>
                 </tbody>
             </table>
         </div>
@@ -299,6 +317,7 @@ window.printYear = function(year) {
                         th:nth-child(3), td:nth-child(3) { width: 20%; }  /* Residence */
                         th:nth-child(4), td:nth-child(4) { width: 28%; }  /* Denomination */
                         th:nth-child(5), td:nth-child(5) { width: 12%; }  /* Year */
+                        th:nth-child(6), td:nth-child(6) { width: 12%; }  /* Amount Paid */
                         
                         .page-break {
                             page-break-before: always;
@@ -372,6 +391,7 @@ window.printYear = function(year) {
                         <div class="flex justify-between items-center">
                             <div>
                                 <p class="text-xl font-semibold text-blue-600">Year: ${year}</p>
+
                                 <p class="text-sm text-gray-600">Total Members: ${memberCount}</p>
                             </div>
                             <div class="text-right text-sm text-gray-600">
