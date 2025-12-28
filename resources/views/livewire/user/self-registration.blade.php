@@ -60,7 +60,7 @@
             @endif
 
             <!-- Registration Form -->
-            <form wire:submit="{{$isEdit ? 'update': 'create' }}" class="relative">
+            <form wire:submit.prevent="{{ $isEdit ? 'update' : 'create' }}" class="relative">
                 <div class="bg-white/80 backdrop-blur-lg rounded-2xl shadow-2xl p-8 sm:p-10 space-y-8 border border-white/20">
                     
                     <!-- Form Header -->
@@ -183,17 +183,45 @@
                     </div>
 
                     <!-- Submit Button -->
-                    <div class="pt-6">
-                        <button
-                            type="submit"
-                            class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-6 rounded-xl hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center space-x-2"
-                        >
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                            <span>{{$isEdit ? "Update Registration" : "Complete Registration"}}</span>
-                        </button>
-                    </div>
+                
+                                       <div class="pt-6">
+                                        <button
+                                            type="submit"
+                                            wire:loading.attr="disabled"
+                                            wire:target="{{ $isEdit ? 'update' : 'create' }}"
+                                            class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-6 rounded-xl
+                                                hover:from-blue-700 hover:to-purple-700
+                                                focus:outline-none focus:ring-4 focus:ring-blue-300
+                                                transition-all duration-300 font-bold text-lg shadow-lg hover:shadow-xl
+                                                transform hover:scale-[1.02] active:scale-[0.98]
+                                                flex items-center justify-center space-x-2
+                                                disabled:opacity-60 disabled:cursor-not-allowed"
+                                        >
+                                            <!-- Icon -->
+                                            <svg wire:loading.remove wire:target="{{ $isEdit ? 'update' : 'create' }}"
+                                                class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                            </svg>
+
+                                            <!-- Loading Spinner -->
+                                            <svg wire:loading wire:target="{{ $isEdit ? 'update' : 'create' }}"
+                                                class="w-6 h-6 animate-spin" fill="none" viewBox="0 0 24 24">
+                                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+                                                <path class="opacity-75" fill="currentColor"
+                                                    d="M4 12a8 8 0 018-8v8z"/>
+                                            </svg>
+
+                                            <span wire:loading.remove wire:target="{{ $isEdit ? 'update' : 'create' }}">
+                                                {{ $isEdit ? "Update Registration" : "Submit Registration" }}
+                                            </span>
+
+                                            <span wire:loading wire:target="{{ $isEdit ? 'update' : 'create' }}">
+                                                Processing...
+                                            </span>
+                                        </button>
+                                    </div>
+
 
                     <!-- Helper Text -->
                     <div class="text-center pt-4">

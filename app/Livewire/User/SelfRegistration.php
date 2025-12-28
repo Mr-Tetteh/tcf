@@ -54,13 +54,13 @@ class SelfRegistration extends Component
             'contact' => $this->contact,
             'denomination' => $this->denomination,
         ]);
-        \sendWithSMSONLINEGH(
-            '233' . substr($this->contact, -9),
-            'Hello, ' . $this->full_name . ', ' .
-            'We are delighted to welcome you to the ' . Carbon::now()->year . ' Annual Family Gathering! ' .
-            'Get ready for a time of joy, connection, and spiritual renewal. ' .
-            'May your stay be filled with blessings, laughter, and the presence of God. Awurade Yesu!'
-        );
+        // \sendWithSMSONLINEGH(
+        //     '233' . substr($this->contact, -9),
+        //     'Hello, ' . $this->full_name . ', ' .
+        //     'We are delighted to welcome you to the ' . Carbon::now()->year . ' Annual Family Gathering! ' .
+        //     'Get ready for a time of joy, connection, and spiritual renewal. ' .
+        //     'May your stay be filled with blessings, laughter, and the presence of God. Awurade Yesu!'
+        // );
 
 
 
