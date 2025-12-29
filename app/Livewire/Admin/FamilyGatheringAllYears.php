@@ -13,7 +13,7 @@ class FamilyGatheringAllYears extends Component
 
     public function render()
     {
-        $familiesByYear = FamilyGathering::orderBy('year', 'desc')
+        $familiesByYear = FamilyGathering::latest()->
             ->get()
             ->groupBy('year');
         $number_of_registered_members = \App\Models\FamilyGathering::whereYear('created_at', Carbon::now()->year)->count();
