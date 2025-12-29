@@ -35,6 +35,7 @@ class FamilyGathering extends Component
         'contact' => 'required|digits_between:9,10',
         'residence' => 'required|string',
         'denomination' => 'required|string',
+        'amount_paid' => 'numeric',
 
     ];
 
