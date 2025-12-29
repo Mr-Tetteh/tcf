@@ -206,6 +206,11 @@
                                         </th>
 
                                         <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
+                                            Created At 
+                                        </th>
+
+
+                                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                                             Actions
                                         </th>
                                     </tr>
@@ -233,6 +238,9 @@
 
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="text-sm text-gray-600">{{ $family->amount_paid }}</div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="text-sm text-gray-600">{{ $family->created_at->diffForHumans() }}</div>
                                             </td>
                                             <td class="px-6 py-4 text-sm font-medium">
     <div class="flex items-center gap-2 whitespace-nowrap">
