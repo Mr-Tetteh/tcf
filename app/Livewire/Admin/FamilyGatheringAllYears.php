@@ -17,7 +17,7 @@ class FamilyGatheringAllYears extends Component
             get()
             ->groupBy('year');
         $number_of_registered_members = \App\Models\FamilyGathering::whereYear('created_at', Carbon::now()->year)->count();
-        $number_of_registered_members_without_amount_paid =  FamilyGathering::where('amount_paid', null)->count();
+        $number_of_registered_members_without_amount_paid =  FamilyGathering::where('amount_paid','0.00')->count();
         return view('livewire.admin.family-gathering-all-years', compact('familiesByYear', 'number_of_registered_members', 'number_of_registered_members_without_amount_paid'));
     }
 }
