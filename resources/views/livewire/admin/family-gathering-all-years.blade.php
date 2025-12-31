@@ -173,7 +173,8 @@
                         </td>
                     </tr>
                     @endforeach
-                    <b>Grand Total: GHC {{ $families->sum('amount_paid') }}</b>
+                    <b>Grand Total: GHC {{ $families->sum('amount_paid') }}</b> <br> <br>
+                    <b>Number of people who's payment ere not recorded or Didn't come for their name tags: {{ $number_of_registered_members_without_amount_paid }}</b>
                 </tbody>
             </table>
         </div>
