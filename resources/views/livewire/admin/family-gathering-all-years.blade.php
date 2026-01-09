@@ -60,6 +60,7 @@
                                 <th class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase">Denomination</th>
                                 <th class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase">Year</th>
                                 <th class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase">Amount Paid</th>
+                                <th class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase">Actions</th>
                             </tr>
                         </thead>
 
@@ -77,6 +78,31 @@
                                     </td>
                                     <td class="px-6 py-4 font-medium">
                                         GHC {{ number_format($family->amount_paid, 2) }}
+                                    </td>
+
+                                    <td>
+                                 <button
+                                        wire:click="edit({{ $family->id }})"
+                                        class="inline-flex items-center px-3 py-1.5 bg-indigo-50 text-indigo-700 rounded-lg hover:bg-indigo-100 transition"
+                                    >
+                                        <svg class="h-4 w-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                        </svg>
+                                        Edit
+                                    </button>
+                                    
+
+                                        <button
+                                            wire:click="delete({{ $family->id }})"
+                                            class="inline-flex items-center px-3 py-1.5 bg-indigo-50 text-red-700 rounded-lg hover:bg-indigo-100 transition"
+                                        >
+                                            <svg class="h-4 w-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                            </svg>
+                                            Delete
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -101,6 +127,145 @@
 
         </div>
     @endforeach
+
+
+@if ($IsEdit)
+  <div id="dialog" aria-labelledby="dialog-title" class="fixed inset-0 size-auto max-h-none max-w-none overflow-y-auto bg-transparent backdrop:bg-transparent">
+    <el-dialog-backdrop class="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"></el-dialog-backdrop>
+
+    <div tabindex="0" class="flex min-h-full items-end justify-center p-4 text-center focus:outline-none sm:items-center sm:p-0">
+      <el-dialog-panel class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-lg data-closed:sm:translate-y-0 data-closed:sm:scale-95">
+        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <div class="sm:flex sm:items-start">
+          
+              <form wire:submit="update"
+                          class="bg-white rounded-xl shadow-sm p-8 space-y-8">
+                        <div class="flex items-center justify-between border-b pb-6">
+                            <h1 class="text-2xl font-bold text-gray-800">
+                                Update Family Gathering Record
+                            </h1>
+                        </div>
+
+                        <!-- Name Fields Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label for="firstName" class="block text-sm font-medium text-gray-700">
+                                    Full Name <span class="text-red-500">*</span>
+                                </label>
+                                <input
+                                    wire:model="full_name"
+                                    type="text"
+                                    id="fullName"
+                                    name="fullName"
+                                    placeholder="Enter full name"
+                                    autocomplete="Danielo"
+                                    class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors duration-200"
+                                >
+                                <div class="text-red-400 text-sm">
+                                    @error('full_name') {{$message}} @enderror
+                                </div>
+                            </div>
+
+                             <div class="space-y-2">
+                                <label for="contact" class="block text-sm font-medium text-gray-700">
+                                    Contact Number <span class="text-red-500">*</span>
+                                </label>
+                                <input
+                                    wire:model="contact"
+                                    type="number"
+                                    id="contact"
+                                    name="contact"
+                                    placeholder="Enter contact number"
+                                    class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors duration-200"
+                                >
+                                <div class="text-red-400 text-sm">
+                                    @error('contact') {{$message}} @enderror
+                                </div>
+                            </div>
+
+                            
+                        </div>
+
+                        <!-- Other Names and Residence -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            
+
+                            <div class="space-y-2">
+                                <label for="residence" class="block text-sm font-medium text-gray-700">
+                                    Residence <span class="text-red-500">*</span>
+                                </label>
+                                <input
+                                    wire:model="residence"
+                                    type="text"
+                                    id="residence"
+                                    name="residence"
+                                    placeholder="Enter residence"
+                                    class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors duration-200"
+                                >
+                                <div class="text-red-400 text-sm">
+                                    @error('residence') {{$message}} @enderror
+                                </div>
+                            </div>
+
+                         
+
+                               <div class="space-y-2">
+                            <label for="church" class="block text-sm font-medium text-gray-700">
+                                Demomination <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                wire:model="denomination"
+                                type="text"
+                                id="denomination"
+                                name="denomination"
+                                placeholder="Enter denomination"
+                                class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors duration-200"
+                            >
+                            <div class="text-red-400 text-sm">
+                                @error('denomination') {{$message}} @enderror
+                            </div>
+                        </div>
+
+                           <div class="space-y-2">
+                                <label for="amount_paid" class="block text-sm font-medium text-gray-700">
+                                    Amount Paid <span class="text-red-500">*</span>
+                                </label>
+                                <input
+                                    wire:model="amount_paid"
+                                    type="text"
+                                    id="amount_paid"
+                                    name="amount_paid"
+                                    placeholder="Enter amount paid"
+                                    class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors duration-200"
+                                >
+                                <div class="text-red-400 text-sm">
+                                    @error('amount_paid') {{$message}} @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="pt-6 space-y-4">
+                            <button
+                                type="submit"
+                                class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200 font-medium text-lg"
+                            >
+                                Update
+                            </button>
+
+
+                        </div>
+                    </form>
+          </div>
+        </div>
+        <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+          <button wire:click="cancelEdit"  class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
+        </div>
+      </el-dialog-panel>
+    </div>
+  </div>
+@endif
+
 
 </div>
 
