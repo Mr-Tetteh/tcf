@@ -23,12 +23,13 @@ class FamilyGathering extends Component
     public $denomination;
     public $year;
     public $family_id;
+    public $amount_paid;
+
     public $isEdit = false;
 
     public $csv;
     public $uploadError = '';
     public $uploadSuccess = '';
-    public $amount_paid;
 
     protected $rules = [
         'full_name' => 'required|string',
@@ -99,6 +100,7 @@ class FamilyGathering extends Component
         $this->isEdit = false;
 
     }
+
 
     public function delete($id)
     {
